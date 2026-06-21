@@ -1,0 +1,25 @@
+{
+  "rules_files": [
+    "ESW_DeckBuilding_rulebook.pdf"
+  ],
+  "card_scan_files": [
+    "беспределы.pdf",
+    "волшебники.pdf",
+    "дохлые колдуны.pdf",
+    "заклинания.pdf",
+    "легенды.pdf",
+    "массовые карты.pdf",
+    "места.pdf",
+    "свойства.pdf",
+    "сокровища.pdf",
+    "твари.pdf",
+    "фамильяры.pdf"
+  ],
+  "rendered_pages": 20,
+  "cards_found": 169,
+  "cards_confident": 0,
+  "cards_needs_review": 169,
+  "ocr_engines": [
+    "none"
+  ]
+}

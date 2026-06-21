@@ -1,6 +1,6 @@
 # Крутагидон: цифровой движок
 
-Проект переносит настольную deck-building игру в проверяемую цифровую среду. Текущий фокус: этап 1, импорт правил и карт из локальных PDF-сканов.
+Проект переносит настольную deck-building игру в проверяемую цифровую среду. Текущий фокус: строгий headless-движок правил, пригодный для будущих агентов.
 
 ## Быстрый старт
 
@@ -9,6 +9,7 @@ pip install pymupdf pillow pytest
 python -m src.importers.run_import
 python -m src.importers.xlsx_cards
 python -m src.game.simulate --players 3 --games 10
+python -m src.game.effect_coverage
 pytest
 ```
 
@@ -20,7 +21,12 @@ pytest
 - `cards.json` создается без догадок: нераспознанные поля остаются пустыми, а карты получают `needs_review`.
 - OCR сделан опциональным. Если системный Tesseract не установлен, импорт продолжает работу и формирует очередь ручной проверки.
 - Ручная таблица `data/processed/cards_full.xlsx` используется как источник игровых данных для движка.
-- Headless-прототип умеет запускать партии между RandomAgent-ботами.
+- Headless-движок умеет запускать партии между RandomAgent-ботами.
+- В состоянии есть явные фазы, pending choice и defense window.
+- Legal actions генерируются централизованно через `LegalActionGenerator`.
+- Простые эффекты работают через primitive effects: мощь, добор, лечение, урон.
+- Есть базовая поддержка targeting, защит, постоянок, беспределов, смерти и жетонов дохлых колдунов.
+- Отчет покрытия эффектов сохраняется в `data/processed/effect_coverage.json`.
 
 Последний запуск этапа 1:
 
@@ -37,6 +43,7 @@ pytest
 python -m src.importers.run_import
 python -m src.importers.xlsx_cards
 python -m src.game.simulate --players 3 --games 10
+python -m src.game.effect_coverage
 pytest
 ```
 
@@ -65,3 +72,11 @@ src/
   agents/
 tests/
 ```
+
+## Статус эффекта карт
+
+```powershell
+python -m src.game.effect_coverage
+```
+
+Команда печатает сводку по реализованности эффектов и сохраняет подробный JSON-отчет в `data/processed/effect_coverage.json`.

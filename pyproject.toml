@@ -1,0 +1,18 @@
+[project]
+name = "krutogidon"
+version = "0.1.0"
+description = "Digital simulation pipeline for Epic Spell Wars deck-building game scans"
+requires-python = ">=3.11"
+dependencies = [
+  "pymupdf>=1.27",
+  "pillow>=12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9"]
+ocr = ["pytesseract>=0.3"]
+xlsx = ["openpyxl>=3.1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

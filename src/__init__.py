@@ -1,0 +1,1 @@
+"""Krutogidon digital game project."""

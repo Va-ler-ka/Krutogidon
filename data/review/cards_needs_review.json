@@ -1,0 +1,6255 @@
+[
+  {
+    "id": "krutagidon_беспределы_001_0001",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        16,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_001_0002",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        16,
+        549,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_001_0003",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 1,
+      "bbox": [
+        1118,
+        16,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_001_0004",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        801,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/беспределы_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_001_0005",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        801,
+        549,
+        750
+      ],
+      "image_path": "data/processed/card_images/беспределы_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_001_0006",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 1,
+      "bbox": [
+        1118,
+        801,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/беспределы_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_001_0007",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        1583,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p001_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_001_0008",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        1583,
+        549,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p001_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_001_0009",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 1,
+      "bbox": [
+        1118,
+        1583,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p001_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_002_0010",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        16,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p002_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_002_0011",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 2,
+      "bbox": [
+        560,
+        16,
+        549,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p002_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_002_0012",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 2,
+      "bbox": [
+        1118,
+        16,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p002_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_002_0013",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        801,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p002_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_002_0014",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 2,
+      "bbox": [
+        560,
+        801,
+        549,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p002_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_002_0015",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 2,
+      "bbox": [
+        1118,
+        801,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p002_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_002_0016",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        1586,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p002_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_002_0017",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 2,
+      "bbox": [
+        560,
+        1586,
+        549,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p002_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_002_0018",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 2,
+      "bbox": [
+        1118,
+        1586,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p002_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_003_0019",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 3,
+      "bbox": [
+        4,
+        16,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/беспределы_p003_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_003_0020",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 3,
+      "bbox": [
+        560,
+        16,
+        549,
+        750
+      ],
+      "image_path": "data/processed/card_images/беспределы_p003_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_003_0021",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 3,
+      "bbox": [
+        1118,
+        16,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/беспределы_p003_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_003_0022",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 3,
+      "bbox": [
+        4,
+        798,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p003_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_003_0023",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 3,
+      "bbox": [
+        560,
+        798,
+        549,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p003_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_003_0024",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 3,
+      "bbox": [
+        1118,
+        798,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/беспределы_p003_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_003_0025",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 3,
+      "bbox": [
+        4,
+        1583,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/беспределы_p003_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_003_0026",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 3,
+      "bbox": [
+        560,
+        1583,
+        549,
+        750
+      ],
+      "image_path": "data/processed/card_images/беспределы_p003_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_беспределы_003_0027",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "беспределы.pdf",
+      "page": 3,
+      "bbox": [
+        1118,
+        1583,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/беспределы_p003_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_001_0028",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        16,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_001_0029",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        16,
+        544,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_001_0030",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 1,
+      "bbox": [
+        1113,
+        16,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_001_0031",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        884,
+        546,
+        832
+      ],
+      "image_path": "data/processed/card_images/волшебники_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_001_0032",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        884,
+        544,
+        832
+      ],
+      "image_path": "data/processed/card_images/волшебники_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_001_0033",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 1,
+      "bbox": [
+        1113,
+        884,
+        546,
+        832
+      ],
+      "image_path": "data/processed/card_images/волшебники_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_001_0034",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        1749,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p001_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_001_0035",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        1749,
+        544,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p001_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_001_0036",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 1,
+      "bbox": [
+        1113,
+        1749,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p001_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_002_0037",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p002_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_002_0038",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        16,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p002_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_002_0039",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p002_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_002_0040",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/волшебники_p002_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_002_0041",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        884,
+        606,
+        832
+      ],
+      "image_path": "data/processed/card_images/волшебники_p002_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_002_0042",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/волшебники_p002_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_002_0043",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p002_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_002_0044",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        1749,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p002_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_002_0045",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/волшебники_p002_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_волшебники_003_0046",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "волшебники.pdf",
+      "page": 3,
+      "bbox": [
+        0,
+        0,
+        1839,
+        47
+      ],
+      "image_path": "data/processed/card_images/волшебники_p003_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_дохлые колдуны_001_0047",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "дохлые колдуны.pdf",
+      "page": 1,
+      "bbox": [
+        5,
+        16,
+        562,
+        830
+      ],
+      "image_path": "data/processed/card_images/дохлые_колдуны_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_дохлые колдуны_001_0048",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "дохлые колдуны.pdf",
+      "page": 1,
+      "bbox": [
+        576,
+        16,
+        564,
+        830
+      ],
+      "image_path": "data/processed/card_images/дохлые_колдуны_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_дохлые колдуны_001_0049",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "дохлые колдуны.pdf",
+      "page": 1,
+      "bbox": [
+        1150,
+        16,
+        562,
+        830
+      ],
+      "image_path": "data/processed/card_images/дохлые_колдуны_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_дохлые колдуны_001_0050",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "дохлые колдуны.pdf",
+      "page": 1,
+      "bbox": [
+        5,
+        879,
+        562,
+        828
+      ],
+      "image_path": "data/processed/card_images/дохлые_колдуны_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_дохлые колдуны_001_0051",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "дохлые колдуны.pdf",
+      "page": 1,
+      "bbox": [
+        576,
+        879,
+        564,
+        828
+      ],
+      "image_path": "data/processed/card_images/дохлые_колдуны_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_дохлые колдуны_001_0052",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "дохлые колдуны.pdf",
+      "page": 1,
+      "bbox": [
+        1150,
+        879,
+        562,
+        828
+      ],
+      "image_path": "data/processed/card_images/дохлые_колдуны_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_001_0053",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        16,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_001_0054",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        16,
+        544,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_001_0055",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 1,
+      "bbox": [
+        1113,
+        16,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_001_0056",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        884,
+        546,
+        832
+      ],
+      "image_path": "data/processed/card_images/заклинания_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_001_0057",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        884,
+        544,
+        832
+      ],
+      "image_path": "data/processed/card_images/заклинания_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_001_0058",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 1,
+      "bbox": [
+        1113,
+        884,
+        546,
+        832
+      ],
+      "image_path": "data/processed/card_images/заклинания_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_001_0059",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        1749,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p001_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_001_0060",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        1749,
+        544,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p001_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_001_0061",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 1,
+      "bbox": [
+        1113,
+        1749,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p001_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_002_0062",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p002_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_002_0063",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        16,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p002_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_002_0064",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p002_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_002_0065",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/заклинания_p002_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_002_0066",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        884,
+        606,
+        832
+      ],
+      "image_path": "data/processed/card_images/заклинания_p002_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_002_0067",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/заклинания_p002_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_002_0068",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p002_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_002_0069",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        1749,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p002_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_заклинания_002_0070",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "заклинания.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/заклинания_p002_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_001_0071",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        16,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/легенды_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_001_0072",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        16,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/легенды_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_001_0073",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 1,
+      "bbox": [
+        1115,
+        16,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/легенды_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_001_0074",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        798,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/легенды_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_001_0075",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        798,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/легенды_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_001_0076",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 1,
+      "bbox": [
+        1115,
+        798,
+        546,
+        752
+      ],
+      "image_path": "data/processed/card_images/легенды_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_001_0077",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        1583,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/легенды_p001_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_001_0078",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        1583,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/легенды_p001_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_001_0079",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 1,
+      "bbox": [
+        1115,
+        1583,
+        546,
+        750
+      ],
+      "image_path": "data/processed/card_images/легенды_p001_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_002_0080",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/легенды_p002_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_002_0081",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        16,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/легенды_p002_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_002_0082",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/легенды_p002_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_002_0083",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/легенды_p002_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_002_0084",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        884,
+        606,
+        832
+      ],
+      "image_path": "data/processed/card_images/легенды_p002_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_002_0085",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/легенды_p002_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_002_0086",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/легенды_p002_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_002_0087",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        1749,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/легенды_p002_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_легенды_002_0088",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "легенды.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/легенды_p002_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_массовые карты_001_0089",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "массовые карты.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/массовые_карты_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_массовые карты_001_0090",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "массовые карты.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        16,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/массовые_карты_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_массовые карты_001_0091",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "массовые карты.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/массовые_карты_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_массовые карты_001_0092",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "массовые карты.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/массовые_карты_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_массовые карты_001_0093",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "массовые карты.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        884,
+        606,
+        832
+      ],
+      "image_path": "data/processed/card_images/массовые_карты_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_массовые карты_001_0094",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "массовые карты.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/массовые_карты_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_массовые карты_001_0095",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "массовые карты.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/массовые_карты_p001_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_массовые карты_001_0096",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "массовые карты.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        1749,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/массовые_карты_p001_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_массовые карты_001_0097",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "массовые карты.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/массовые_карты_p001_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_места_001_0098",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "места.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/места_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_места_001_0099",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "места.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        16,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/места_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_места_001_0100",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "места.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/места_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_места_001_0101",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "места.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/места_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_места_001_0102",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "места.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        884,
+        606,
+        832
+      ],
+      "image_path": "data/processed/card_images/места_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_места_001_0103",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "места.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/места_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_места_001_0104",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "места.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/места_p001_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_места_001_0105",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "места.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        1749,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/места_p001_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_места_001_0106",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "места.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/места_p001_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_свойства_001_0107",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "свойства.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/свойства_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_свойства_001_0108",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "свойства.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        16,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/свойства_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_свойства_001_0109",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "свойства.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/свойства_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_свойства_001_0110",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "свойства.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/свойства_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_свойства_001_0111",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "свойства.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        884,
+        606,
+        832
+      ],
+      "image_path": "data/processed/card_images/свойства_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_свойства_001_0112",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "свойства.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/свойства_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_свойства_001_0113",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "свойства.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/свойства_p001_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_свойства_001_0114",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "свойства.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        1749,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/свойства_p001_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_свойства_001_0115",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "свойства.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/свойства_p001_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_001_0116",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_001_0117",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        16,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_001_0118",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_001_0119",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/сокровища_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_001_0120",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        884,
+        606,
+        832
+      ],
+      "image_path": "data/processed/card_images/сокровища_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_001_0121",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/сокровища_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_001_0122",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p001_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_001_0123",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 1,
+      "bbox": [
+        616,
+        1749,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p001_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_001_0124",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 1,
+      "bbox": [
+        1231,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p001_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_002_0125",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p002_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_002_0126",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        16,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p002_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_002_0127",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p002_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_002_0128",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/сокровища_p002_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_002_0129",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        884,
+        606,
+        832
+      ],
+      "image_path": "data/processed/card_images/сокровища_p002_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_002_0130",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/сокровища_p002_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_002_0131",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p002_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_002_0132",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        1749,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p002_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_сокровища_002_0133",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "сокровища.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/сокровища_p002_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_001_0134",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        16,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_001_0135",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        16,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_001_0136",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 1,
+      "bbox": [
+        1115,
+        16,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_001_0137",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        884,
+        546,
+        832
+      ],
+      "image_path": "data/processed/card_images/твари_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_001_0138",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        884,
+        546,
+        832
+      ],
+      "image_path": "data/processed/card_images/твари_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_001_0139",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 1,
+      "bbox": [
+        1115,
+        884,
+        546,
+        832
+      ],
+      "image_path": "data/processed/card_images/твари_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_001_0140",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        1749,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p001_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_001_0141",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        1749,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p001_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_001_0142",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 1,
+      "bbox": [
+        1115,
+        1749,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p001_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_002_0143",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p002_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_002_0144",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        16,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p002_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_002_0145",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p002_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_002_0146",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/твари_p002_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_002_0147",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        884,
+        606,
+        832
+      ],
+      "image_path": "data/processed/card_images/твари_p002_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_002_0148",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/твари_p002_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_002_0149",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p002_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_002_0150",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        1749,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p002_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_твари_002_0151",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "твари.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/твари_p002_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_001_0152",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        16,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p001_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_001_0153",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        16,
+        549,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p001_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_001_0154",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 1,
+      "bbox": [
+        1118,
+        16,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p001_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_001_0155",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        884,
+        546,
+        832
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p001_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_001_0156",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        884,
+        549,
+        832
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p001_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_001_0157",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 1,
+      "bbox": [
+        1118,
+        884,
+        546,
+        832
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p001_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_001_0158",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 1,
+      "bbox": [
+        4,
+        1749,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p001_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_001_0159",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 1,
+      "bbox": [
+        560,
+        1749,
+        549,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p001_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_001_0160",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 1,
+      "bbox": [
+        1118,
+        1749,
+        546,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p001_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_002_0161",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p002_c01.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_002_0162",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        16,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p002_c02.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_002_0163",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        16,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p002_c03.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_002_0164",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p002_c04.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_002_0165",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        884,
+        606,
+        832
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p002_c05.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_002_0166",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        884,
+        603,
+        832
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p002_c06.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_002_0167",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 2,
+      "bbox": [
+        4,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p002_c07.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_002_0168",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 2,
+      "bbox": [
+        616,
+        1749,
+        606,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p002_c08.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  },
+  {
+    "id": "krutagidon_фамильяры_002_0169",
+    "name": "",
+    "type": "",
+    "set": "krutagidon",
+    "cost": null,
+    "victory_points": null,
+    "power": 0,
+    "text": "",
+    "keywords": [],
+    "attack": false,
+    "defense": false,
+    "ongoing": false,
+    "group_attack": false,
+    "source": {
+      "file": "фамильяры.pdf",
+      "page": 2,
+      "bbox": [
+        1231,
+        1749,
+        603,
+        835
+      ],
+      "image_path": "data/processed/card_images/фамильяры_p002_c09.png"
+    },
+    "ocr": {
+      "engine": "none",
+      "confidence": null,
+      "needs_review": true,
+      "raw_text": ""
+    },
+    "implementation": {
+      "effect_id": null,
+      "status": "not_implemented",
+      "notes": "Imported from scan; card fields require OCR/manual review."
+    }
+  }
+]
