@@ -10,6 +10,7 @@ python -m src.importers.run_import
 python -m src.importers.xlsx_cards
 python -m src.game.simulate --players 3 --games 10
 python -m src.game.effect_coverage
+python -m src.game.simulate --players 3 --games 1 --seed 100 --replay-dir data/replays
 pytest
 ```
 
@@ -27,6 +28,12 @@ pytest
 - Простые эффекты работают через primitive effects: мощь, добор, лечение, урон.
 - Есть базовая поддержка targeting, защит, постоянок, беспределов, смерти и жетонов дохлых колдунов.
 - Отчет покрытия эффектов сохраняется в `data/processed/effect_coverage.json`.
+- Стопки собираются из `data/processed/deck_manifest.json`.
+- Игровые зоны используют физические копии карт `CardInstance`.
+- Вум всегда первая открытая легенда; число легенд зависит от числа игроков.
+- Фамильяр начинает под планшетом, покупается в сброс и дальше работает как обычная карта.
+- Текст карт разделяется на секции: main, attack, defense, ongoing, group attack, scoring.
+- Симуляция умеет писать replay/debug JSON.
 
 Последний запуск этапа 1:
 
@@ -44,6 +51,8 @@ python -m src.importers.run_import
 python -m src.importers.xlsx_cards
 python -m src.game.simulate --players 3 --games 10
 python -m src.game.effect_coverage
+python -m src.game.simulate --players 3 --games 1 --seed 100 --replay-dir data/replays
+python -m src.game.simulate --players 3 --games 1 --seed 100 --strict
 pytest
 ```
 
@@ -80,3 +89,6 @@ python -m src.game.effect_coverage
 ```
 
 Команда печатает сводку по реализованности эффектов и сохраняет подробный JSON-отчет в `data/processed/effect_coverage.json`.
+Markdown-версия сохраняется в `docs/effect_coverage.md`.
+
+`--strict` ожидаемо может падать на нереализованных эффектах. Это режим проверки полноты реализации, а не обычный режим симуляции.

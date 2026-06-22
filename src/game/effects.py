@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from typing import Protocol
 
 from .enums import GamePhase
+from .card_text import parse_card_text
+from .instances import card_def_for, card_id_for
 from .models import CardDefinition, EffectRequest, GameState, PendingChoice, PlayerState
 from .setup import draw_cards
 from .targeting import CHOSEN_ENEMY, target_candidates
@@ -49,7 +51,7 @@ class DrawCards:
     count: int
 
     def apply(self, *, state: GameState, player: PlayerState, card: CardDefinition | None, rng: random.Random, database=None) -> EffectResult:
-        draw_cards(player, self.count, rng)
+        draw_cards(state, player, self.count, rng)
         return EffectResult(True)
 
 
@@ -107,8 +109,21 @@ class DestroyCard:
     zone_selector: str
 
     def apply(self, *, state: GameState, player: PlayerState, card: CardDefinition | None, rng: random.Random, database=None) -> EffectResult:
+        if self.zone_selector == "hand" and player.hand:
+            player.destroyed.append(player.hand.pop())
+            return EffectResult(True)
+        if self.zone_selector == "discard" and player.discard:
+            player.destroyed.append(player.discard.pop())
+            return EffectResult(True)
+        if self.zone_selector == "hand_or_discard":
+            if player.hand:
+                player.destroyed.append(player.hand.pop())
+                return EffectResult(True)
+            if player.discard:
+                player.destroyed.append(player.discard.pop())
+                return EffectResult(True)
         state.event_log.append(f"DestroyCard({self.zone_selector}) not_implemented")
-        return EffectResult(False, "destroy card not implemented")
+        return EffectResult(False, "destroy card target unavailable")
 
 
 @dataclass(frozen=True)
@@ -116,6 +131,14 @@ class GainCard:
     source_selector: str
 
     def apply(self, *, state: GameState, player: PlayerState, card: CardDefinition | None, rng: random.Random, database=None) -> EffectResult:
+        if self.source_selector == "market" and state.market:
+            instance_id = state.market.pop(0)
+            if player.next_gained_card_to_top_deck:
+                player.deck.append(instance_id)
+                player.next_gained_card_to_top_deck = False
+            else:
+                player.discard.append(instance_id)
+            return EffectResult(True)
         state.event_log.append(f"GainCard({self.source_selector}) not_implemented")
         return EffectResult(False, "gain card not implemented")
 
@@ -201,9 +224,9 @@ def apply_card_effect(
     database=None,
     include_attack: bool = True,
 ) -> None:
-    effect = parse_basic_effect(card, target_player=target_player, include_attack=include_attack)
+    effect = parse_basic_effect(card, target_player=target_player, include_attack=include_attack, mode="play")
     result = effect.apply(state=state, player=player, card=card, rng=rng, database=database)
-    if not result.implemented and strict and card.text and card.text != "(Эффекта нет.)":
+    if strict and card.text and card.text != "(Эффекта нет.)" and (not result.implemented or has_unparsed_complex_text(card)):
         raise NotImplementedError(f"Effect not implemented for {card.id}: {card.text}")
     if result.notes:
         state.event_log.append(f"{card.name}: {result.notes}")
@@ -218,10 +241,23 @@ def parse_basic_effect(
     *,
     target_player: int | None = None,
     include_attack: bool = True,
+    mode: str = "play",
 ) -> CompositeEffect:
-    text = card.text.lower()
+    sections = parse_card_text(card.text)
+    if mode == "defense":
+        source_text = sections.defense_text or ""
+    elif mode == "group_attack":
+        source_text = sections.group_attack_text or ""
+    elif mode == "attack":
+        source_text = sections.attack_text or ""
+    else:
+        parts = [sections.main_text]
+        if include_attack and sections.attack_text:
+            parts.append(sections.attack_text)
+        source_text = " ".join(part for part in parts if part)
+    text = source_text.lower()
     effects: list[EffectPrimitive] = []
-    if card.power:
+    if mode == "play" and card.power and (sections.main_text or not sections.attack_text):
         effects.append(GainPower(card.power))
 
     draw_match = re.search(r"возьми\s+(\d+)\s+карт", text)
@@ -232,12 +268,13 @@ def parse_basic_effect(
     if heal_match:
         effects.append(Heal(int(heal_match.group(1))))
 
-    if include_attack:
+    if include_attack and mode in {"play", "attack", "group_attack"}:
         damage_match = re.search(r"нанеси\s+(\d+)\s+урон", text)
         if damage_match:
+            selector = "all_enemies" if "кажд" in text else CHOSEN_ENEMY
             effects.append(
                 DealDamage(
-                    CHOSEN_ENEMY,
+                    selector,
                     int(damage_match.group(1)),
                     is_attack=card.attack,
                     target_player=target_player,
@@ -269,9 +306,9 @@ def resolve_damage_request(state: GameState, request: EffectRequest, *, database
 
 def has_available_defense(state: GameState, database, player_id: int) -> bool:
     player = state.players[player_id]
-    if any(database.cards[card_id].defense for card_id in player.hand):
+    if any(card_def_for(state, database, instance_id).defense for instance_id in player.hand):
         return True
-    return bool(player.familiar and database.cards[player.familiar].defense)
+    return False
 
 
 def use_defense_card(
@@ -289,26 +326,22 @@ def use_defense_card(
     if choice.actor_id != defender_id:
         raise ValueError("Defense action actor does not match pending defender")
     defender = state.players[defender_id]
+    defense_ref = defense_card_id
     if source == "hand":
-        if defense_card_id not in defender.hand:
+        if defense_ref not in defender.hand:
             raise ValueError("Defense card is not in hand")
-        defender.hand.remove(defense_card_id)
-        defender.discard.append(defense_card_id)
-    elif source == "familiar":
-        if defender.familiar != defense_card_id:
-            raise ValueError("Defense familiar does not match controlled familiar")
-        defender.discard.append(defense_card_id)
-        defender.familiar = None
+        defender.hand.remove(defense_ref)
+        defender.discard.append(defense_ref)
     else:
         raise ValueError(f"Unsupported defense source: {source}")
 
-    card = database.cards[defense_card_id]
-    defense_effect = parse_basic_effect(card, include_attack=False)
+    card = card_def_for(state, database, defense_ref)
+    defense_effect = parse_basic_effect(card, include_attack=False, mode="defense")
     defense_effect.apply(state=state, player=defender, card=card, rng=rng, database=database)
     state.event_log.append(f"{defender.name} uses defense {card.name}")
 
     request = choice.effect
-    if "перенаправ" in card.text.lower():
+    if "перенаправ" in (parse_card_text(card.text).defense_text or "").lower():
         apply_damage(state, defender_id, request.source_player_id, request.amount)
         state.event_log.append(f"{card.name}: redirected attack to {state.players[request.source_player_id].name}")
     request.current_target_index += 1
@@ -355,7 +388,7 @@ def handle_player_death(state: GameState, player: PlayerState) -> None:
 def has_unparsed_complex_text(card: CardDefinition) -> bool:
     lower = card.text.lower()
     simple_patterns = [
-        r"\+\d+\s*мощ",
+        r"\+\d+\s*мощ\w*",
         r"возьми\s+\d+\s+карт",
         r"нанеси\s+\d+\s+урон",
         r"накрути\s+\d+\s+жизн",

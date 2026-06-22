@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from .enums import ActionType, GamePhase
+from .instances import card_def_for
 from .models import Action, CardDatabase, GameState
 from .targeting import needs_target_choice, target_candidates
 
@@ -24,14 +25,15 @@ class LegalActionGenerator:
         player = state.current_player
         actions: list[Action] = []
 
-        for card_id in player.hand:
-            card = self.database.cards[card_id]
+        for instance_id in player.hand:
+            card = card_def_for(state, self.database, instance_id)
             candidates = target_candidates(state, player.id, "chosen_enemy")
             if card.attack and needs_target_choice(state, player.id, "chosen_enemy") and len(candidates) > 1:
                 actions.append(
                     Action(
                         ActionType.PLAY_CARD,
-                        card_id=card_id,
+                        card_id=card.id,
+                        instance_id=instance_id,
                         actor_id=player.id,
                         payload={"requires_target": True},
                         description=f"Play {card.name} and choose target",
@@ -42,20 +44,22 @@ class LegalActionGenerator:
                 actions.append(
                     Action(
                         ActionType.PLAY_CARD,
-                        card_id=card_id,
+                        card_id=card.id,
+                        instance_id=instance_id,
                         target_player=target,
                         actor_id=player.id,
                         description=f"Play {card.name}",
                     )
                 )
 
-        for index, card_id in enumerate(state.market):
-            card = self.database.cards[card_id]
+        for index, instance_id in enumerate(state.market):
+            card = card_def_for(state, self.database, instance_id)
             if card.cost is not None and card.cost <= player.power:
                 actions.append(
                     Action(
                         ActionType.BUY_MARKET_CARD,
-                        card_id=card_id,
+                        card_id=card.id,
+                        instance_id=instance_id,
                         market_index=index,
                         actor_id=player.id,
                         description=f"Buy market card {card.name}",
@@ -63,36 +67,39 @@ class LegalActionGenerator:
                 )
 
         if state.current_legend and not player.has_defeated_legend_this_turn:
-            legend = self.database.cards[state.current_legend]
+            legend = card_def_for(state, self.database, state.current_legend)
             if legend.cost is not None and legend.cost <= player.power:
                 actions.append(
                     Action(
                         ActionType.DEFEAT_LEGEND,
                         card_id=legend.id,
+                        instance_id=state.current_legend,
                         actor_id=player.id,
                         description=f"Defeat legend {legend.name}",
                     )
                 )
 
         if state.wild_magic_stack:
-            wild_magic = self.database.cards[state.wild_magic_stack[-1]]
+            wild_magic = card_def_for(state, self.database, state.wild_magic_stack[-1])
             if wild_magic.cost is not None and wild_magic.cost <= player.power:
                 actions.append(
                     Action(
                         ActionType.BUY_WILD_MAGIC,
                         card_id=wild_magic.id,
+                        instance_id=state.wild_magic_stack[-1],
                         actor_id=player.id,
                         description=f"Buy {wild_magic.name}",
                     )
                 )
 
-        if player.familiar is None and state.familiar_market:
-            familiar = self.database.cards[state.familiar_market[0]]
+        if not player.familiar_purchased and player.unbought_familiar_id:
+            familiar = self.database.cards[player.unbought_familiar_id]
             if familiar.cost is not None and familiar.cost <= player.power:
                 actions.append(
                     Action(
                         ActionType.BUY_FAMILIAR,
                         card_id=familiar.id,
+                        instance_id=None,
                         actor_id=player.id,
                         description=f"Buy familiar {familiar.name}",
                     )
@@ -122,28 +129,17 @@ class LegalActionGenerator:
             return []
         defender = state.players[choice.actor_id]
         actions: list[Action] = []
-        for card_id in defender.hand:
-            card = self.database.cards[card_id]
+        for instance_id in defender.hand:
+            card = card_def_for(state, self.database, instance_id)
             if card.defense:
                 actions.append(
                     Action(
                         ActionType.USE_DEFENSE,
-                        card_id=card_id,
+                        card_id=card.id,
+                        instance_id=instance_id,
                         actor_id=defender.id,
                         payload={"defense_source": "hand"},
                         description=f"Use defense {card.name}",
-                    )
-                )
-        if defender.familiar:
-            familiar = self.database.cards[defender.familiar]
-            if familiar.defense:
-                actions.append(
-                    Action(
-                        ActionType.USE_DEFENSE,
-                        card_id=familiar.id,
-                        actor_id=defender.id,
-                        payload={"defense_source": "familiar"},
-                        description=f"Use familiar defense {familiar.name}",
                     )
                 )
         actions.append(

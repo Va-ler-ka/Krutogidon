@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from .instances import card_def_for
 from .models import CardDatabase, GameState
 
 
@@ -24,10 +25,10 @@ def fire_trigger(
         raise ValueError(f"Unknown trigger: {trigger_name}")
     player = state.players[player_id]
     for ongoing_id in player.ongoing:
-        ongoing = database.cards[ongoing_id]
+        ongoing = card_def_for(state, database, ongoing_id)
         if trigger_name in ongoing.text.lower():
             state.event_log.append(f"{ongoing.name}: {trigger_name} trigger not_implemented")
     if card_id is not None:
-        card = database.cards[card_id]
+        card = card_def_for(state, database, card_id)
         if card.ongoing:
             state.event_log.append(f"{card.name}: passive trigger shell registered")

@@ -10,6 +10,7 @@ venv/
 data/processed/pages/
 data/processed/card_images/
 data/processed/ocr/
+data/replays/
 
 # Local editor/OS noise.
 .idea/

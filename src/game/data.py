@@ -4,6 +4,7 @@ from pathlib import Path
 
 from src.importers.xlsx_cards import load_cards_database, write_cards_full_json
 
+from .deck_manifest import load_deck_manifest, validate_deck_manifest
 from .models import CardDatabase, CardDefinition
 
 
@@ -76,7 +77,7 @@ def load_card_database(path: Path = DEFAULT_XLSX) -> CardDatabase:
         mayhem_cards.append(definition)
         main_deck_cards.append(definition.id)
 
-    return CardDatabase(
+    database = CardDatabase(
         cards=cards,
         mayhem_cards=mayhem_cards,
         legends=legends,
@@ -87,6 +88,12 @@ def load_card_database(path: Path = DEFAULT_XLSX) -> CardDatabase:
         weak_wand_id=weak_wand_id,
         dead_wizard_tokens=dead_wizard_tokens,
     )
+    manifest = load_deck_manifest()
+    errors = validate_deck_manifest(manifest, database)
+    if errors:
+        raise ValueError(f"Invalid deck manifest: {errors}")
+    database.manifest = manifest
+    return database
 
 
 def infer_effect_id(text: str) -> str | None:

@@ -3,8 +3,10 @@ from __future__ import annotations
 import random
 import re
 
+from .card_text import parse_card_text
 from .effects import apply_card_effect, decline_defense, use_defense_card
 from .enums import ActionType, GamePhase
+from .instances import card_def_for, card_id_for, create_card_instance, find_instance_for_card, set_owner
 from .legal_actions import LegalActionGenerator
 from .models import Action, CardDatabase, EffectRequest, GameState, PendingChoice, PlayerState
 from .scoring import compute_winners
@@ -55,15 +57,16 @@ class GameEngine:
 
     def play_card(self, action: Action) -> None:
         player = self.state.current_player
-        if action.card_id not in player.hand:
-            raise ValueError(f"Card is not in hand: {action.card_id}")
-        player.hand.remove(action.card_id)
-        card = self.database.cards[action.card_id]
+        instance_id = action.instance_id or find_instance_for_card(self.state, player.hand, action.card_id or "")
+        if instance_id not in player.hand:
+            raise ValueError(f"Card is not in hand: {action.card_id or action.instance_id}")
+        player.hand.remove(instance_id)
+        card = card_def_for(self.state, self.database, instance_id)
         if card.ongoing:
-            player.ongoing.append(action.card_id)
-            fire_trigger(self.state, self.database, "on_card_played", player.id, action.card_id)
+            player.ongoing.append(instance_id)
+            fire_trigger(self.state, self.database, "on_card_played", player.id, instance_id)
         else:
-            player.played.append(action.card_id)
+            player.played.append(instance_id)
         self.state.event_log.append(f"{player.name} играет {card.name}")
 
         if card.attack and action.target_player is None and needs_target_choice(self.state, player.id, CHOSEN_ENEMY):
@@ -79,9 +82,9 @@ class GameEngine:
             self.state.phase = GamePhase.CHOOSE_TARGET
             self.state.pending_choice = PendingChoice(
                 choice_type="attack_target",
-                actor_id=player.id,
-                source_player_id=player.id,
-                source_card_id=card.id,
+                    actor_id=player.id,
+                    source_player_id=player.id,
+                    source_card_id=card.id,
                 candidates=target_candidates(self.state, player.id, CHOSEN_ENEMY),
                 effect=EffectRequest(
                     source_card_id=card.id,
@@ -138,7 +141,7 @@ class GameEngine:
             state=self.state,
             database=self.database,
             defender_id=action.actor_id if action.actor_id is not None else self.state.pending_choice.actor_id,
-            defense_card_id=action.card_id or "",
+            defense_card_id=action.instance_id or action.card_id or "",
             rng=self.rng,
             source=source,
         )
@@ -151,17 +154,24 @@ class GameEngine:
         player = self.state.current_player
         if action.market_index is None or action.market_index >= len(self.state.market):
             raise ValueError("Invalid market index")
-        card_id = self.state.market[action.market_index]
-        if action.card_id and action.card_id != card_id:
+        instance_id = self.state.market[action.market_index]
+        card = card_def_for(self.state, self.database, instance_id)
+        if action.instance_id and action.instance_id != instance_id:
+            raise ValueError("Action instance_id does not match market slot")
+        if action.card_id and action.card_id not in {card.id, instance_id}:
             raise ValueError("Action card_id does not match market slot")
-        card = self.database.cards[card_id]
         if card.cost is None or card.cost > player.power:
             raise ValueError("Not enough power")
         player.power -= card.cost
-        player.discard.append(card_id)
+        set_owner(self.state, instance_id, player.id)
+        if player.next_gained_card_to_top_deck:
+            player.deck.append(instance_id)
+            player.next_gained_card_to_top_deck = False
+        else:
+            player.discard.append(instance_id)
         del self.state.market[action.market_index]
         self.state.event_log.append(f"{player.name} покупает {card.name}")
-        fire_trigger(self.state, self.database, "on_card_bought", player.id, card_id)
+        fire_trigger(self.state, self.database, "on_card_bought", player.id, instance_id)
         fill_market(self.state, self.database, self.rng)
         self.state.phase = GamePhase.MAIN
 
@@ -171,11 +181,13 @@ class GameEngine:
             raise ValueError("No current legend")
         if player.has_defeated_legend_this_turn:
             raise ValueError("Only one legend can be defeated per turn")
-        legend = self.database.cards[self.state.current_legend]
+        legend_instance = self.state.current_legend
+        legend = card_def_for(self.state, self.database, legend_instance)
         if legend.cost is None or legend.cost > player.power:
             raise ValueError("Not enough power for legend")
         player.power -= legend.cost
-        player.discard.append(legend.id)
+        set_owner(self.state, legend_instance, player.id)
+        player.discard.append(legend_instance)
         player.defeated_legends += 1
         player.has_defeated_legend_this_turn = True
         self.state.event_log.append(f"{player.name} побеждает легенду {legend.name}")
@@ -186,27 +198,31 @@ class GameEngine:
         player = self.state.current_player
         if not self.state.wild_magic_stack:
             raise ValueError("Wild magic stack is empty")
-        card_id = self.state.wild_magic_stack[-1]
-        card = self.database.cards[card_id]
+        instance_id = self.state.wild_magic_stack[-1]
+        card = card_def_for(self.state, self.database, instance_id)
         if card.cost is None or card.cost > player.power:
             raise ValueError("Not enough power")
         player.power -= card.cost
-        player.discard.append(self.state.wild_magic_stack.pop())
+        bought = self.state.wild_magic_stack.pop()
+        set_owner(self.state, bought, player.id)
+        player.discard.append(bought)
         self.state.event_log.append(f"{player.name} покупает {card.name}")
         self.state.phase = GamePhase.MAIN
 
     def buy_familiar(self) -> None:
         player = self.state.current_player
-        if player.familiar is not None:
+        if player.familiar_purchased:
             raise ValueError("Player already has a familiar")
-        if not self.state.familiar_market:
-            raise ValueError("No familiars available")
-        card_id = self.state.familiar_market[0]
+        if not player.unbought_familiar_id:
+            raise ValueError("Player has no assigned familiar")
+        card_id = player.unbought_familiar_id
         card = self.database.cards[card_id]
         if card.cost is None or card.cost > player.power:
             raise ValueError("Not enough power")
         player.power -= card.cost
-        player.familiar = self.state.familiar_market.pop(0)
+        instance_id = create_card_instance(self.state, card_id, owner_id=player.id, origin="familiar")
+        player.discard.append(instance_id)
+        player.familiar_purchased = True
         self.state.event_log.append(f"{player.name} покупает фамильяра {card.name}")
         self.state.phase = GamePhase.MAIN
 
@@ -220,12 +236,12 @@ class GameEngine:
         player.played = []
         player.power = 0
         player.has_defeated_legend_this_turn = False
-        draw_cards(player, self.state.config.hand_size, self.rng)
+        draw_cards(self.state, player, self.state.config.hand_size, self.rng)
 
         if self.state.current_legend is None and self.state.legend_deck:
             self.state.phase = GamePhase.LEGEND_REVEAL
             self.state.current_legend = self.state.legend_deck.pop(0)
-            legend = self.database.cards[self.state.current_legend]
+            legend = card_def_for(self.state, self.database, self.state.current_legend)
             self.state.event_log.append(f"Раскрыта новая легенда: {legend.name}")
             if legend.group_attack:
                 self.resolve_group_attack(legend.id)
@@ -246,8 +262,9 @@ class GameEngine:
             self.state.phase = GamePhase.GAME_OVER
 
     def resolve_group_attack(self, legend_id: str) -> None:
-        legend = self.database.cards[legend_id]
-        damage = extract_damage_amount(legend.text)
+        legend = card_def_for(self.state, self.database, legend_id)
+        group_text = parse_card_text(legend.text).group_attack_text or ""
+        damage = extract_damage_amount(group_text)
         self.state.event_log.append(f"Групповая атака легенды: {legend.name}")
         if damage <= 0:
             if self.state.config.strict:
@@ -299,7 +316,9 @@ def actions_match(actual: Action, legal: Action) -> bool:
         return False
     if actual.actor_id is not None and legal.actor_id is not None and actual.actor_id != legal.actor_id:
         return False
-    if actual.card_id is not None and actual.card_id != legal.card_id:
+    if actual.instance_id is not None and actual.instance_id != legal.instance_id:
+        return False
+    if actual.card_id is not None and actual.card_id not in {legal.card_id, legal.instance_id}:
         return False
     if actual.market_index is not None and actual.market_index != legal.market_index:
         return False

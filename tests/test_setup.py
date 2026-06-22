@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from src.game.models import GameConfig
 from src.game.setup import setup_game
+from src.game.instances import card_def_for
 
 
 def test_setup_creates_players_starting_decks_and_market() -> None:
@@ -13,7 +14,7 @@ def test_setup_creates_players_starting_decks_and_market() -> None:
     assert all(len(player.deck) == 5 for player in state.players)
     assert len(state.market) == 5
     assert state.current_legend is not None
-    assert all(database.cards[card_id].card_class != "Беспредел" for card_id in state.market)
+    assert all(card_def_for(state, database, card_id).card_class != "Беспредел" for card_id in state.market)
 
 
 def test_setup_rejects_invalid_player_count() -> None:

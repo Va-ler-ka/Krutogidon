@@ -27,6 +27,14 @@ class CardDefinition:
 
 
 @dataclass
+class CardInstance:
+    instance_id: str
+    card_id: str
+    owner_id: int | None
+    origin: str | None = None
+
+
+@dataclass
 class CardDatabase:
     cards: dict[str, CardDefinition]
     mayhem_cards: list[CardDefinition]
@@ -37,6 +45,7 @@ class CardDatabase:
     wild_magic_id: str | None
     weak_wand_id: str | None
     dead_wizard_tokens: list[str] = field(default_factory=list)
+    manifest: Any | None = None
 
     def by_name(self, name: str) -> CardDefinition:
         for card in self.cards.values():
@@ -57,10 +66,13 @@ class PlayerState:
     ongoing: list[str] = field(default_factory=list)
     destroyed: list[str] = field(default_factory=list)
     dead_wizard_tokens: list[str] = field(default_factory=list)
+    unbought_familiar_id: str | None = None
+    familiar_purchased: bool = False
     familiar: str | None = None
     power: int = 0
     defeated_legends: int = 0
     has_defeated_legend_this_turn: bool = False
+    next_gained_card_to_top_deck: bool = False
 
 
 @dataclass
@@ -108,6 +120,7 @@ class GameConfig:
 class Action:
     type: ActionType
     card_id: str | None = None
+    instance_id: str | None = None
     market_index: int | None = None
     target_player: int | None = None
     actor_id: int | None = None
@@ -138,6 +151,8 @@ class GameState:
     familiar_market: list[str]
     mayhem_discard: list[str]
     event_log: list[str]
+    card_instances: dict[str, CardInstance] = field(default_factory=dict)
+    next_instance_seq: int = 0
     phase: GamePhase = GamePhase.MAIN
     pending_choice: PendingChoice | None = None
     effect_queue: list[EffectRequest] = field(default_factory=list)

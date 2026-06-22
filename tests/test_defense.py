@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from src.game.engine import GameEngine
 from src.game.enums import ActionType, GamePhase
+from src.game.instances import create_card_instance
 from src.game.models import Action, GameConfig
 from src.game.setup import setup_game
 
@@ -61,19 +62,19 @@ def test_familiar_defense_redirects_damage_to_attacker() -> None:
     attacker = state.players[0]
     defender = state.players[1]
     attacker.hand = [wand_id]
-    defender.hand = []
-    defender.familiar = familiar_id
+    familiar_instance = create_card_instance(state, familiar_id, owner_id=defender.id, origin="test_familiar")
+    defender.hand = [familiar_instance]
 
     engine.step(Action(ActionType.PLAY_CARD, card_id=wand_id, target_player=defender.id))
     engine.step(
         Action(
             ActionType.USE_DEFENSE,
             card_id=familiar_id,
+            instance_id=familiar_instance,
             actor_id=defender.id,
-            payload={"defense_source": "familiar"},
         )
     )
 
     assert defender.health == 20
     assert attacker.health == 19
-    assert defender.familiar is None
+    assert familiar_instance in defender.discard
