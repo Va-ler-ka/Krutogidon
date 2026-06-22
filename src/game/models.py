@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+from enum import StrEnum
 from typing import Any
 
 from .enums import ActionType, GamePhase
@@ -75,10 +76,20 @@ class PlayerState:
     next_gained_card_to_top_deck: bool = False
 
 
+class SourceKind(StrEnum):
+    PLAYER_CARD = "player_card"
+    PLAYER_MAYHEM = "player_mayhem"
+    MARKET_MAYHEM = "market_mayhem"
+    LEGEND_GROUP_ATTACK = "legend_group_attack"
+    DEAD_WIZARD_TOKEN = "dead_wizard_token"
+    SELF = "self"
+    SYSTEM = "system"
+
+
 @dataclass
 class EffectRequest:
     source_card_id: str
-    source_player_id: int
+    source_player_id: int | None
     effect_type: str
     amount: int = 0
     target_player_ids: list[int] = field(default_factory=list)
@@ -86,6 +97,11 @@ class EffectRequest:
     selector: str = "chosen_enemy"
     is_attack: bool = False
     group: bool = False
+    source_kind: SourceKind = SourceKind.PLAYER_CARD
+    source_card_instance_id: str | None = None
+    defense_allowed: bool = True
+    redirectable: bool = True
+    already_redirected: bool = False
     metadata: dict[str, Any] = field(default_factory=dict)
 
 
@@ -106,6 +122,7 @@ class GameConfig:
     seed: int | None = None
     strict: bool = False
     starting_health: int = 20
+    max_health: int = 25
     hand_size: int = 5
     market_size: int = 5
     legend_count: int | None = None
@@ -154,6 +171,8 @@ class GameState:
     pending_choice: PendingChoice | None = None
     effect_queue: list[EffectRequest] = field(default_factory=list)
     dead_wizard_stack: list[str] = field(default_factory=list)
+    trophy_controller_id: int | None = None
+    pending_turn_advance: bool = False
     game_over: bool = False
     winner_ids: list[int] = field(default_factory=list)
     end_reason: str | None = None

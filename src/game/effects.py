@@ -8,7 +8,7 @@ from typing import Protocol
 from .enums import GamePhase
 from .card_text import parse_card_text
 from .instances import card_def_for, card_id_for
-from .models import CardDefinition, EffectRequest, GameState, PendingChoice, PlayerState
+from .models import CardDefinition, EffectRequest, GameState, PendingChoice, PlayerState, SourceKind
 from .setup import draw_cards
 from .targeting import ALL_ENEMIES, CHOSEN_ENEMY, parse_selector_from_text, target_candidates
 
@@ -60,7 +60,7 @@ class Heal:
     amount: int
 
     def apply(self, *, state: GameState, player: PlayerState, card: CardDefinition | None, rng: random.Random, database=None) -> EffectResult:
-        player.health += self.amount
+        player.health = min(state.config.max_health, player.health + self.amount)
         return EffectResult(True)
 
 
@@ -89,6 +89,9 @@ class DealDamage:
             selector=self.selector,
             is_attack=self.is_attack,
             group=len(targets) > 1,
+            source_kind=SourceKind.PLAYER_CARD,
+            defense_allowed=self.is_attack,
+            redirectable=self.is_attack,
             metadata={"draw_on_kill_cards": self.draw_on_kill_cards},
         )
         resolve_damage_request(state, request, database=database, rng=rng)
@@ -308,8 +311,12 @@ def parse_basic_effect(
 def resolve_damage_request(state: GameState, request: EffectRequest, *, database, rng: random.Random) -> None:
     while request.current_target_index < len(request.target_player_ids):
         target_id = request.target_player_ids[request.current_target_index]
-        if request.is_attack and database is not None and has_available_defense(state, database, target_id):
+        if request.is_attack and request.defense_allowed and database is not None and has_available_defense(state, database, target_id):
             state.phase = GamePhase.DEFENSE_WINDOW
+            state.event_log.append(
+                f"defense offered to {state.players[target_id].name} "
+                f"(source_kind={request.source_kind.value}, redirectable={request.redirectable})"
+            )
             state.pending_choice = PendingChoice(
                 choice_type="defense",
                 actor_id=target_id,
@@ -319,9 +326,9 @@ def resolve_damage_request(state: GameState, request: EffectRequest, *, database
                 prompt=f"{state.players[target_id].name} may defend against attack",
             )
             return
-        died = apply_damage(state, request.source_player_id, target_id, request.amount)
+        died = apply_damage(state, target_id, request.amount, request)
         draw_on_kill = int(request.metadata.get("draw_on_kill_cards", 0))
-        if died and draw_on_kill:
+        if died and draw_on_kill and request.source_player_id is not None:
             draw_cards(state, state.players[request.source_player_id], draw_on_kill, rng)
             state.event_log.append(
                 f"{state.players[request.source_player_id].name} draws {draw_on_kill} cards after kill"
@@ -329,6 +336,8 @@ def resolve_damage_request(state: GameState, request: EffectRequest, *, database
         request.current_target_index += 1
     state.pending_choice = None
     state.phase = GamePhase.MAIN
+    if request.metadata.get("advance_turn_after_resolution"):
+        state.pending_turn_advance = True
 
 
 def has_available_defense(state: GameState, database, player_id: int) -> bool:
@@ -369,8 +378,24 @@ def use_defense_card(
 
     request = choice.effect
     if "перенаправ" in (parse_card_text(card.text).defense_text or "").lower():
-        apply_damage(state, defender_id, request.source_player_id, request.amount)
-        state.event_log.append(f"{card.name}: redirected attack to {state.players[request.source_player_id].name}")
+        if request.redirectable and request.source_player_id is not None and not request.already_redirected:
+            redirect_request = EffectRequest(
+                source_card_id=card.id,
+                source_player_id=defender_id,
+                effect_type="deal_damage",
+                amount=request.amount,
+                target_player_ids=[request.source_player_id],
+                is_attack=False,
+                source_kind=SourceKind.PLAYER_CARD,
+                defense_allowed=False,
+                redirectable=False,
+                metadata={"redirected_from": request.source_kind},
+            )
+            request.already_redirected = True
+            apply_damage(state, request.source_player_id, request.amount, redirect_request)
+            state.event_log.append(f"{card.name}: redirected attack to {state.players[request.source_player_id].name}")
+        else:
+            state.event_log.append(f"{card.name}: redirect ignored (source not redirectable)")
     request.current_target_index += 1
     resolve_damage_request(state, request, database=database, rng=rng)
 
@@ -383,38 +408,68 @@ def decline_defense(*, state: GameState, database, defender_id: int, rng: random
         raise ValueError("Defense action actor does not match pending defender")
     request = choice.effect
     target_id = request.target_player_ids[request.current_target_index]
-    died = apply_damage(state, request.source_player_id, target_id, request.amount)
+    died = apply_damage(state, target_id, request.amount, request)
     draw_on_kill = int(request.metadata.get("draw_on_kill_cards", 0))
-    if died and draw_on_kill:
+    if died and draw_on_kill and request.source_player_id is not None:
         draw_cards(state, state.players[request.source_player_id], draw_on_kill, rng)
     request.current_target_index += 1
     resolve_damage_request(state, request, database=database, rng=rng)
 
 
-def apply_damage(state: GameState, source_player_id: int, target_player_id: int, amount: int) -> bool:
+def apply_damage(state: GameState, target_player_id: int, amount: int, request: EffectRequest) -> bool:
     target = state.players[target_player_id]
     target.health -= amount
     state.event_log.append(
-        f"{state.players[source_player_id].name} deals {amount} damage to {target.name}"
+        f"{source_label(state, request)} deals {amount} damage to {target.name} "
+        f"(source_kind={request.source_kind.value})"
     )
     if target.health <= 0:
-        handle_player_death(state, target)
+        handle_player_death(state, target, request)
         return True
     return False
 
 
-def handle_player_death(state: GameState, player: PlayerState) -> None:
+def handle_player_death(state: GameState, player: PlayerState, request: EffectRequest) -> None:
+    maybe_award_trophy(state, player.id, request)
     if state.dead_wizard_stack:
         token_id = state.dead_wizard_stack.pop()
         player.dead_wizard_tokens.append(token_id)
         player.health = state.config.death_reset_health
         state.event_log.append(
-            f"{player.name} receives dead wizard token {token_id}; {TODO_RULE_CLARIFICATION_DEATH_RESET_HEALTH}"
+            f"{player.name} dies and receives dead wizard token {token_id} "
+            f"(source_kind={request.source_kind.value})"
         )
+        state.event_log.append(f"{player.name} resets to {state.config.death_reset_health} health")
     else:
         state.game_over = True
         state.end_reason = "dead_wizard_tokens_empty"
         state.phase = GamePhase.GAME_OVER
+        state.event_log.append(f"{player.name} dies; dead wizard token stack is empty")
+
+
+def maybe_award_trophy(state: GameState, killed_player_id: int, request: EffectRequest) -> None:
+    if request.source_kind not in {SourceKind.PLAYER_CARD, SourceKind.PLAYER_MAYHEM}:
+        return
+    if request.source_player_id is None or request.source_player_id == killed_player_id:
+        return
+    previous = state.trophy_controller_id
+    state.trophy_controller_id = request.source_player_id
+    state.event_log.append(
+        f"trophy_change: player {request.source_player_id} gains Main Prize after killing player {killed_player_id}"
+        f" (previous={previous}, source_kind={request.source_kind.value})"
+    )
+
+
+def source_label(state: GameState, request: EffectRequest) -> str:
+    if request.source_player_id is not None:
+        return state.players[request.source_player_id].name
+    if request.source_kind == SourceKind.LEGEND_GROUP_ATTACK:
+        return "Legend group attack"
+    if request.source_kind == SourceKind.MARKET_MAYHEM:
+        return "Market mayhem"
+    if request.source_kind == SourceKind.PLAYER_MAYHEM:
+        return "Player mayhem"
+    return request.source_kind.value
 
 
 def has_unparsed_complex_text(card: CardDefinition) -> bool:

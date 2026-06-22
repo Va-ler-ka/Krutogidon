@@ -10,7 +10,7 @@ def score_player(player: PlayerState, database: CardDatabase, state: GameState |
         zones.append(player.familiar)
     card_ids = [card_id_for(state, ref) if state is not None else ref for ref in zones]
     total = sum(database.cards[card_id].victory_points for card_id in card_ids if card_id in database.cards)
-    total -= len(player.dead_wizard_tokens)
+    total -= len(player.dead_wizard_tokens) * 3
     return total
 
 

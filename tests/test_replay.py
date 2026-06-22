@@ -33,3 +33,21 @@ def test_replay_summary_counts_actions_and_events(tmp_path) -> None:
     assert summary["action_types"]
     assert summary["cards_played_count"] > 0
     assert "coverage_summary" in summary
+
+
+def test_replay_summary_exposes_stage_2_6_2_diagnostics(tmp_path) -> None:
+    result = run_one_game(players=3, seed=97, max_turns=60, replay_dir=tmp_path)
+    summary = summarize_replay(load_replay(result["replay_path"]))
+
+    assert "deaths_by_source_kind" in summary
+    assert "trophy_changes" in summary
+    assert "group_attacks_count" in summary
+    assert "defenses_offered_count" in summary
+    assert "defenses_used_count" in summary
+    assert "defenses_declined_count" in summary
+    assert "redirects_count" in summary
+    assert "pending_choices_count" in summary
+    assert "partial_unsafe_count" in summary
+    assert "not_implemented_count" in summary
+    assert "top_partial_unsafe_cards" in summary
+    assert "top_not_implemented_cards" in summary

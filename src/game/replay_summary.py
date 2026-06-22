@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -20,6 +21,7 @@ def summarize_replay(payload: dict[str, Any]) -> dict[str, Any]:
     action_types = Counter(normalize_action_type(action_payload(action).get("type", "")) for action in actions)
 
     event_text = "\n".join(str(event) for event in events).lower()
+    source_kind_counts = Counter(extract_source_kinds(events))
     summary = {
         "seed": payload.get("seed"),
         "git_commit": payload.get("git_commit"),
@@ -37,13 +39,24 @@ def summarize_replay(payload: dict[str, Any]) -> dict[str, Any]:
             + action_types.get("buy_wild_magic", 0)
             + action_types.get("buy_familiar", 0)
         ),
+        "deaths_by_source_kind": dict(sorted(source_kind_counts.items())),
+        "trophy_changes": count_any(event_text, ["trophy_change"]),
         "attacks_resolved_count": count_any(event_text, ["deals", "наносит", "урон"]),
+        "group_attacks_count": count_any(event_text, ["групповая атака легенды", "legend group attack"]),
+        "defenses_offered_count": count_any(event_text, ["defense offered", "may defend against attack"]),
         "defenses_used_count": count_any(event_text, ["uses defense", "использует защит"]),
+        "defenses_declined_count": action_types.get("decline_defense", 0),
+        "redirects_count": count_any(event_text, ["redirected attack", "redirect ignored"]),
+        "pending_choices_count": action_types.get("choose_target", 0),
         "deaths_count": count_any(event_text, ["receives dead wizard token", "жетон дохлого колдуна"]),
         "mayhems_revealed_count": count_any(event_text, ["беспредел раскрыт", "беспредел раскрыт"]),
         "legends_defeated_count": count_any(event_text, ["побеждает легенду", "defeats legend"]),
         "unimplemented_effects_count": count_any(event_text, ["not_implemented", "effect skipped"]),
+        "not_implemented_count": count_any(event_text, ["not_implemented", "effect skipped"]),
         "partial_effects_count": count_any(event_text, ["complex text skipped", "basic parts applied"]),
+        "partial_unsafe_count": count_any(event_text, ["complex text skipped", "basic parts applied", "partial_unsafe"]),
+        "top_partial_unsafe_cards": top_event_sources(events, ["complex text skipped", "basic parts applied", "partial_unsafe"]),
+        "top_not_implemented_cards": top_event_sources(events, ["not_implemented", "effect skipped"]),
         "coverage_summary": payload.get("coverage_summary", {}),
     }
     return summary
@@ -63,6 +76,28 @@ def action_payload(action: dict[str, Any]) -> dict[str, Any]:
 
 def count_any(text: str, needles: list[str]) -> int:
     return sum(text.count(needle.lower()) for needle in needles)
+
+
+def extract_source_kinds(events: list[Any]) -> list[str]:
+    result: list[str] = []
+    for event in events:
+        text = str(event)
+        if "dies" not in text and "dead wizard token" not in text:
+            continue
+        result.extend(re.findall(r"source_kind=([a-z_]+)", text))
+    return result
+
+
+def top_event_sources(events: list[Any], needles: list[str]) -> list[dict[str, Any]]:
+    counts: Counter[str] = Counter()
+    lowered_needles = [needle.lower() for needle in needles]
+    for event in events:
+        text = str(event)
+        lower = text.lower()
+        if any(needle in lower for needle in lowered_needles):
+            source = text.split(":", 1)[0]
+            counts[source] += 1
+    return [{"source": source, "count": count} for source, count in counts.most_common(10)]
 
 
 def main(argv: list[str] | None = None) -> None:

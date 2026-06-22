@@ -5,7 +5,7 @@ from dataclasses import replace
 from src.game.engine import GameEngine, group_attack_order
 from src.game.enums import ActionType
 from src.game.instances import card_def_for
-from src.game.models import Action, GameConfig
+from src.game.models import Action, GameConfig, SourceKind
 from src.game.setup import setup_game
 
 
@@ -95,3 +95,92 @@ def test_group_attack_targets_all_wizards_starting_after_current_player() -> Non
     engine.resolve_group_attack(legend_id)
 
     assert [player.health for player in state.players] == [19, 19, 19]
+
+
+def test_end_turn_legend_reveal_preserves_defense_window() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=90))
+    engine = GameEngine(state, database)
+    legend_id = state.current_legend
+    assert legend_id is not None
+    legend_def = card_def_for(state, database, legend_id)
+    database.cards[legend_def.id] = replace(
+        legend_def,
+        text="Групповая атака: нанеси 1 урон каждому колдуну.",
+        group_attack=True,
+    )
+    state.current_legend = None
+    state.legend_deck = [legend_id]
+    defense_id = next(card.id for card in database.cards.values() if card.defense)
+    state.players[1].hand = [defense_id]
+    state.players[0].hand = []
+
+    engine.step(Action(ActionType.END_TURN))
+
+    assert state.phase.value == "defense_window"
+    assert state.pending_choice is not None
+    assert state.current_player_index == 0
+
+
+def test_group_attack_resumes_turn_after_defense_window_resolved() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=91))
+    engine = GameEngine(state, database)
+    legend_id = state.current_legend
+    assert legend_id is not None
+    legend_def = card_def_for(state, database, legend_id)
+    database.cards[legend_def.id] = replace(
+        legend_def,
+        text="Групповая атака: нанеси 1 урон каждому колдуну.",
+        group_attack=True,
+    )
+    state.current_legend = None
+    state.legend_deck = [legend_id]
+    defense_id = next(card.id for card in database.cards.values() if card.defense)
+    state.players[1].hand = [defense_id]
+    state.players[0].hand = []
+
+    engine.step(Action(ActionType.END_TURN))
+    engine.step(Action(ActionType.DECLINE_DEFENSE, actor_id=1))
+
+    assert state.phase.value == "main"
+    assert state.current_player_index == 1
+
+
+def test_group_attack_uses_neutral_source_kind() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=92))
+    engine = GameEngine(state, database)
+    legend_id = state.current_legend
+    assert legend_id is not None
+    legend_def = card_def_for(state, database, legend_id)
+    database.cards[legend_def.id] = replace(
+        legend_def,
+        text="Групповая атака: нанеси 1 урон каждому колдуну.",
+        group_attack=True,
+    )
+    state.players[0].hand = []
+    state.players[1].hand = []
+
+    engine.resolve_group_attack(legend_id)
+
+    assert any(f"source_kind={SourceKind.LEGEND_GROUP_ATTACK.value}" in event for event in state.event_log)
+
+
+def test_group_attack_familiar_redirect_does_not_hit_previous_player() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=93))
+    engine = GameEngine(state, database)
+    legend_id = state.current_legend
+    assert legend_id is not None
+    legend_def = card_def_for(state, database, legend_id)
+    database.cards[legend_def.id] = replace(
+        legend_def,
+        text="Групповая атака: нанеси 1 урон каждому колдуну.",
+        group_attack=True,
+    )
+    familiar_id = next(card.id for card in database.cards.values() if card.card_class == "Фамильяр" and card.defense)
+    state.players[1].hand = [familiar_id]
+    before_attacker_health = state.players[0].health
+
+    engine.resolve_group_attack(legend_id)
+    engine.step(Action(ActionType.USE_DEFENSE, card_id=familiar_id, actor_id=1))
+
+    assert state.players[0].health == before_attacker_health - 1
+    assert any("redirect ignored" in event for event in state.event_log)

@@ -104,3 +104,4 @@ python -m src.game.replay_summary data/replays/<replay>.json
 ```
 
 `replay_summary` печатает компактную JSON-сводку по seed, числу игроков, действиям, событиям, покупкам, атакам, защитам, смертям, победителям и coverage snapshot.
+После Stage 2.6.2 в сводку также входят `source_kind`, смерти по источникам, смены Главного приза, group attack, defense/redirect и partial/not_implemented счетчики.

@@ -76,6 +76,36 @@ def test_conditional_effect_then_else() -> None:
     assert player.health == before + 2
 
 
+def test_heal_under_cap() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=82))
+    player = state.players[0]
+    player.health = 18
+
+    Heal(3).apply(state=state, player=player, card=None, rng=random.Random(1), database=database)
+
+    assert player.health == 21
+
+
+def test_heal_to_cap() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=83))
+    player = state.players[0]
+    player.health = 22
+
+    Heal(3).apply(state=state, player=player, card=None, rng=random.Random(1), database=database)
+
+    assert player.health == state.config.max_health
+
+
+def test_heal_does_not_exceed_25() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=84))
+    player = state.players[0]
+    player.health = 24
+
+    Heal(10).apply(state=state, player=player, card=None, rng=random.Random(1), database=database)
+
+    assert player.health == 25
+
+
 def test_parsed_attack_can_make_each_enemy_discard() -> None:
     state, database = setup_game(GameConfig(player_count=3, seed=76))
     card = CardDefinition(

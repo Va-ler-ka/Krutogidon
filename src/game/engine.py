@@ -8,7 +8,7 @@ from .effects import apply_card_effect, decline_defense, use_defense_card
 from .enums import ActionType, GamePhase
 from .instances import card_def_for, card_id_for, create_card_instance, find_instance_for_card, set_owner
 from .legal_actions import LegalActionGenerator
-from .models import Action, CardDatabase, EffectRequest, GameState, PendingChoice, PlayerState
+from .models import Action, CardDatabase, EffectRequest, GameState, PendingChoice, PlayerState, SourceKind
 from .scoring import compute_winners
 from .setup import draw_cards, fill_market
 from .targeting import CHOSEN_ENEMY, needs_target_choice, parse_selector_from_text, target_candidates
@@ -53,6 +53,8 @@ class GameEngine:
             self.end_turn()
         else:
             raise ValueError(f"Unsupported action: {action.type}")
+        if self.state.pending_turn_advance and self.state.phase == GamePhase.MAIN and not self.state.game_over:
+            self._advance_to_next_turn()
         self.check_game_over()
 
     def play_card(self, action: Action) -> None:
@@ -95,6 +97,10 @@ class GameEngine:
                     amount=extract_damage_amount(card.text),
                     selector=attack_selector,
                     is_attack=True,
+                    source_kind=SourceKind.PLAYER_CARD,
+                    source_card_instance_id=instance_id,
+                    defense_allowed=True,
+                    redirectable=True,
                 ),
                 prompt=f"Choose target for {card.name}",
             )
@@ -239,6 +245,8 @@ class GameEngine:
         player.power = 0
         player.has_defeated_legend_this_turn = False
         draw_cards(self.state, player, self.state.config.hand_size, self.rng)
+        if self.state.trophy_controller_id == player.id:
+            self.apply_trophy_end_turn(player)
 
         if self.state.current_legend is None and self.state.legend_deck:
             self.state.phase = GamePhase.LEGEND_REVEAL
@@ -247,12 +255,34 @@ class GameEngine:
             self.state.event_log.append(f"Раскрыта новая легенда: {legend.name}")
             if legend.group_attack:
                 self.resolve_group_attack(legend.id)
+                if self.state.phase == GamePhase.DEFENSE_WINDOW:
+                    self.state.pending_turn_advance = True
+                    return
         elif self.state.current_legend is None and not self.state.legend_deck:
             self.state.game_over = True
             self.state.end_reason = "legend_deck_empty"
             self.state.phase = GamePhase.GAME_OVER
             return
 
+        self._advance_to_next_turn()
+
+    def apply_trophy_end_turn(self, player: PlayerState) -> None:
+        before = len(player.hand)
+        draw_cards(self.state, player, 1, self.rng)
+        if player.hand:
+            discarded = player.hand.pop()
+            player.discard.append(discarded)
+            self.state.event_log.append(
+                f"trophy_end_turn: {player.name} controls Main Prize, draws to 6 and auto-discards {discarded}"
+            )
+        else:
+            self.state.event_log.append(
+                f"trophy_end_turn: {player.name} controls Main Prize, no card available to discard"
+            )
+        self.state.event_log.append(f"trophy_end_turn_draw_delta={len(player.hand) - before}")
+
+    def _advance_to_next_turn(self) -> None:
+        self.state.pending_turn_advance = False
         self.state.current_player_index = (self.state.current_player_index + 1) % len(self.state.players)
         self.state.turn_number += 1
         self.state.phase = GamePhase.START_OF_TURN
@@ -277,12 +307,16 @@ class GameEngine:
         targets = group_attack_order(self.state)
         request = EffectRequest(
             source_card_id=legend.id,
-            source_player_id=actor_id,
+            source_player_id=None,
             effect_type="deal_damage",
             amount=damage,
             target_player_ids=targets,
             is_attack=True,
             group=True,
+            source_kind=SourceKind.LEGEND_GROUP_ATTACK,
+            defense_allowed=True,
+            redirectable=False,
+            metadata={"advance_turn_after_resolution": True},
         )
         self.state.effect_queue.append(request)
         from .effects import resolve_damage_request

@@ -3,7 +3,8 @@
 - Total cards: 113
 - Implemented: 0
 - Implemented with tests: 12
-- Partial: 71
+- Partial safe: 0
+- Partial unsafe: 71
 - Not implemented: 28
 - No effect: 2
 - Data errors: 0
