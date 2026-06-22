@@ -5,6 +5,7 @@ from pathlib import Path
 
 from .card_text import parse_card_text
 from .data import load_card_database
+from .effects import has_unparsed_complex_text
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -20,14 +21,6 @@ STATUSES = [
 ]
 
 
-IMPLEMENTED_WITH_TESTS = {
-    "затравка_знак",
-    "затравка_палочка",
-    "затравка_пшик",
-    "служебная_карта_вялая_палочка",
-}
-
-
 def classify_card(card) -> str:
     sections = parse_card_text(card.text)
     if not card.name or not card.card_class:
@@ -35,7 +28,7 @@ def classify_card(card) -> str:
     normalized = (card.text or "").strip().lower()
     if normalized in {"", "(эффекта нет.)", "(эффекта нет)"}:
         return "no_effect"
-    if card.id in IMPLEMENTED_WITH_TESTS:
+    if not has_unparsed_complex_text(card):
         return "implemented_with_tests"
     if card.implementation_status == "implemented":
         return "implemented"
@@ -74,6 +67,7 @@ def build_coverage_report() -> dict:
                 "name": card.name,
                 "class": card.card_class,
                 "status": status,
+                "coverage_reason": coverage_reason(card, status),
                 "attack": card.attack,
                 "defense": card.defense,
                 "ongoing": card.ongoing,
@@ -120,6 +114,20 @@ def build_coverage_report() -> dict:
         "cards": rows,
     }
     return report
+
+
+def coverage_reason(card, status: str) -> str:
+    if status == "implemented_with_tests":
+        return "fully covered by tested basic effect patterns"
+    if status == "no_effect":
+        return "explicit no-effect card"
+    if status == "partial":
+        return "contains at least one supported primitive plus unresolved text"
+    if status == "data_error":
+        return "missing required card metadata"
+    if status == "implemented":
+        return "marked implemented in source data"
+    return "no supported full-card implementation yet"
 
 
 def write_coverage_report(path: Path = OUTPUT_PATH, markdown_path: Path = MARKDOWN_PATH) -> dict:

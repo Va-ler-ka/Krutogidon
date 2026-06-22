@@ -45,3 +45,5 @@ def test_implemented_with_tests_status_supported() -> None:
     report = build_coverage_report()
 
     assert "implemented_with_tests" in report["statuses"]
+    assert report["implemented_with_tests"] >= 12
+    assert all("coverage_reason" in row for row in report["cards"])

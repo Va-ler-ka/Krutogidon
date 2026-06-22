@@ -10,6 +10,11 @@ from .models import CardDatabase
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_MANIFEST = ROOT / "data" / "processed" / "deck_manifest.json"
+EXPECTED_MAIN_DECK_PHYSICAL_COUNT = 124
+EXPECTED_MAYHEM_UNIQUE_COUNT = 26
+EXPECTED_SINGLETON_NON_MAYHEM_COUNT = 18
+EXPECTED_DOUBLE_UNIQUE_COUNT = 40
+EXPECTED_DOUBLE_PHYSICAL_COUNT = 80
 
 
 @dataclass(frozen=True)
@@ -80,7 +85,85 @@ def validate_deck_manifest(manifest: DeckManifest, database: CardDatabase) -> li
     expected_starters = set(database.starter_cards.values())
     if not expected_starters.issubset(starter_ids):
         errors.append(f"missing starter cards in manifest: {sorted(expected_starters - starter_ids)}")
+    errors.extend(validate_main_deck_manifest(manifest, database)["errors"])
     return errors
+
+
+def expected_main_deck_quantity(card) -> int:
+    if card.card_class == "Беспредел":
+        return 1
+    if card.card_class == "Место":
+        return 1
+    if card.cost in {6, 7}:
+        return 1
+    return 2
+
+
+def validate_main_deck_manifest(manifest: DeckManifest, database: CardDatabase) -> dict[str, Any]:
+    entries = {entry.card_id: entry.quantity for entry in manifest.main_deck}
+    expected_ids = set(database.main_deck_cards)
+    actual_ids = set(entries)
+    missing = sorted(expected_ids - actual_ids)
+    extra = sorted(actual_ids - expected_ids)
+
+    mayhem: list[str] = []
+    singleton: list[str] = []
+    double: list[str] = []
+    wrong_quantity: list[dict[str, Any]] = []
+
+    for card_id in sorted(actual_ids & expected_ids):
+        card = database.cards[card_id]
+        expected_quantity = expected_main_deck_quantity(card)
+        actual_quantity = entries[card_id]
+        if card.card_class == "Беспредел":
+            mayhem.append(card_id)
+        elif expected_quantity == 1:
+            singleton.append(card_id)
+        else:
+            double.append(card_id)
+        if actual_quantity != expected_quantity:
+            wrong_quantity.append(
+                {
+                    "card_id": card_id,
+                    "name": card.name,
+                    "class": card.card_class,
+                    "cost": card.cost,
+                    "expected": expected_quantity,
+                    "actual": actual_quantity,
+                }
+            )
+
+    physical_count = sum(entries.values())
+    double_physical_count = sum(entries[card_id] for card_id in double if card_id in entries)
+    errors: list[str] = []
+    if physical_count != EXPECTED_MAIN_DECK_PHYSICAL_COUNT:
+        errors.append(f"main_deck_physical_count expected 124, got {physical_count}")
+    if len(mayhem) != EXPECTED_MAYHEM_UNIQUE_COUNT:
+        errors.append(f"mayhem_unique_count expected 26, got {len(mayhem)}")
+    if len(singleton) != EXPECTED_SINGLETON_NON_MAYHEM_COUNT:
+        errors.append(f"singleton_non_mayhem_count expected 18, got {len(singleton)}")
+    if len(double) != EXPECTED_DOUBLE_UNIQUE_COUNT:
+        errors.append(f"double_unique_count expected 40, got {len(double)}")
+    if double_physical_count != EXPECTED_DOUBLE_PHYSICAL_COUNT:
+        errors.append(f"double_physical_count expected 80, got {double_physical_count}")
+    if missing:
+        errors.append(f"cards missing from main_deck manifest: {missing}")
+    if extra:
+        errors.append(f"cards not expected in main_deck manifest: {extra}")
+    if wrong_quantity:
+        errors.append(f"cards with wrong quantity: {wrong_quantity}")
+
+    return {
+        "errors": errors,
+        "main_deck_physical_count": physical_count,
+        "mayhem": mayhem,
+        "singleton_non_mayhem": singleton,
+        "double": double,
+        "double_physical_count": double_physical_count,
+        "missing": missing,
+        "extra": extra,
+        "wrong_quantity": wrong_quantity,
+    }
 
 
 def dead_wizard_token_count(manifest: DeckManifest, player_count: int) -> int:

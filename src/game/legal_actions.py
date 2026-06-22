@@ -3,7 +3,8 @@ from __future__ import annotations
 from .enums import ActionType, GamePhase
 from .instances import card_def_for
 from .models import Action, CardDatabase, GameState
-from .targeting import needs_target_choice, target_candidates
+from .card_text import parse_card_text
+from .targeting import needs_target_choice, parse_selector_from_text, target_candidates
 
 
 class LegalActionGenerator:
@@ -27,20 +28,22 @@ class LegalActionGenerator:
 
         for instance_id in player.hand:
             card = card_def_for(state, self.database, instance_id)
-            candidates = target_candidates(state, player.id, "chosen_enemy")
-            if card.attack and needs_target_choice(state, player.id, "chosen_enemy") and len(candidates) > 1:
+            attack_text = parse_card_text(card.text).attack_text or ""
+            selector = parse_selector_from_text(attack_text)
+            candidates = target_candidates(state, player.id, selector)
+            if card.attack and needs_target_choice(state, player.id, selector) and len(candidates) > 1:
                 actions.append(
                     Action(
                         ActionType.PLAY_CARD,
                         card_id=card.id,
                         instance_id=instance_id,
                         actor_id=player.id,
-                        payload={"requires_target": True},
+                        payload={"requires_target": True, "target_candidates": candidates},
                         description=f"Play {card.name} and choose target",
                     )
                 )
             else:
-                target = candidates[0] if card.attack and candidates else None
+                target = candidates[0] if card.attack and needs_target_choice(state, player.id, selector) and candidates else None
                 actions.append(
                     Action(
                         ActionType.PLAY_CARD,
@@ -48,6 +51,7 @@ class LegalActionGenerator:
                         instance_id=instance_id,
                         target_player=target,
                         actor_id=player.id,
+                        payload={"target_candidates": candidates} if card.attack else {},
                         description=f"Play {card.name}",
                     )
                 )

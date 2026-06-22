@@ -10,7 +10,7 @@ from .card_text import parse_card_text
 from .instances import card_def_for, card_id_for
 from .models import CardDefinition, EffectRequest, GameState, PendingChoice, PlayerState
 from .setup import draw_cards
-from .targeting import CHOSEN_ENEMY, target_candidates
+from .targeting import ALL_ENEMIES, CHOSEN_ENEMY, parse_selector_from_text, target_candidates
 
 
 TODO_RULE_CLARIFICATION_DEATH_RESET_HEALTH = (
@@ -70,10 +70,14 @@ class DealDamage:
     amount: int
     is_attack: bool = True
     target_player: int | None = None
+    draw_on_kill_cards: int = 0
 
     def apply(self, *, state: GameState, player: PlayerState, card: CardDefinition | None, rng: random.Random, database=None) -> EffectResult:
         targets = [self.target_player] if self.target_player is not None else target_candidates(state, player.id, self.selector)
-        targets = [target for target in targets if target is not None and target != player.id]
+        if self.selector in {CHOSEN_ENEMY, ALL_ENEMIES}:
+            targets = [target for target in targets if target is not None and target != player.id]
+        else:
+            targets = [target for target in targets if target is not None]
         if not targets:
             return EffectResult(False, "no legal damage target")
         request = EffectRequest(
@@ -85,6 +89,7 @@ class DealDamage:
             selector=self.selector,
             is_attack=self.is_attack,
             group=len(targets) > 1,
+            metadata={"draw_on_kill_cards": self.draw_on_kill_cards},
         )
         resolve_damage_request(state, request, database=database, rng=rng)
         return EffectResult(True)
@@ -256,30 +261,46 @@ def parse_basic_effect(
             parts.append(sections.attack_text)
         source_text = " ".join(part for part in parts if part)
     text = source_text.lower()
+    kill_draw_pattern = r"если .*?подох.*?возьми\s+(\d+)\s+карт\w*"
+    text_without_attack_conditions = re.sub(kill_draw_pattern, "", text)
     effects: list[EffectPrimitive] = []
     if mode == "play" and card.power and (sections.main_text or not sections.attack_text):
         effects.append(GainPower(card.power))
 
-    draw_match = re.search(r"возьми\s+(\d+)\s+карт", text)
+    draw_match = re.search(r"возьми\s+(\d+)\s+карт\w*", text_without_attack_conditions)
     if draw_match:
         effects.append(DrawCards(int(draw_match.group(1))))
 
-    heal_match = re.search(r"накрути\s+(\d+)\s+жизн", text)
+    heal_match = re.search(r"накрути\s+(\d+)\s+жизн", text_without_attack_conditions)
     if heal_match:
         effects.append(Heal(int(heal_match.group(1))))
 
+    discard_match = re.search(r"сбрасывает\s+(\d+)\s+карт\w*", text_without_attack_conditions)
+    if discard_match:
+        effects.append(DiscardCards(parse_selector_from_text(text), int(discard_match.group(1))))
+
     if include_attack and mode in {"play", "attack", "group_attack"}:
-        damage_match = re.search(r"нанеси\s+(\d+)\s+урон", text)
+        damage_match = re.search(r"нанеси\s+(\d+)\s+урон\w*", text)
+        if not damage_match:
+            damage_match = re.search(r"нанеси\s+(?:выбранному\s+(?:врагу|колдуну)\s+)?(\d+)\s+урон\w*", text)
         if damage_match:
-            selector = "all_enemies" if "кажд" in text else CHOSEN_ENEMY
+            selector = parse_selector_from_text(text)
+            draw_on_kill = 0
+            kill_draw_match = re.search(kill_draw_pattern, text)
+            if kill_draw_match:
+                draw_on_kill = int(kill_draw_match.group(1))
             effects.append(
                 DealDamage(
                     selector,
                     int(damage_match.group(1)),
                     is_attack=card.attack,
                     target_player=target_player,
+                    draw_on_kill_cards=draw_on_kill,
                 )
             )
+
+    if "получает вялую палочку" in text or "получают вялую палочку" in text:
+        effects.append(GiveWeakWand(parse_selector_from_text(text), 1))
 
     return CompositeEffect(effects)
 
@@ -298,7 +319,13 @@ def resolve_damage_request(state: GameState, request: EffectRequest, *, database
                 prompt=f"{state.players[target_id].name} may defend against attack",
             )
             return
-        apply_damage(state, request.source_player_id, target_id, request.amount)
+        died = apply_damage(state, request.source_player_id, target_id, request.amount)
+        draw_on_kill = int(request.metadata.get("draw_on_kill_cards", 0))
+        if died and draw_on_kill:
+            draw_cards(state, state.players[request.source_player_id], draw_on_kill, rng)
+            state.event_log.append(
+                f"{state.players[request.source_player_id].name} draws {draw_on_kill} cards after kill"
+            )
         request.current_target_index += 1
     state.pending_choice = None
     state.phase = GamePhase.MAIN
@@ -356,12 +383,15 @@ def decline_defense(*, state: GameState, database, defender_id: int, rng: random
         raise ValueError("Defense action actor does not match pending defender")
     request = choice.effect
     target_id = request.target_player_ids[request.current_target_index]
-    apply_damage(state, request.source_player_id, target_id, request.amount)
+    died = apply_damage(state, request.source_player_id, target_id, request.amount)
+    draw_on_kill = int(request.metadata.get("draw_on_kill_cards", 0))
+    if died and draw_on_kill:
+        draw_cards(state, state.players[request.source_player_id], draw_on_kill, rng)
     request.current_target_index += 1
     resolve_damage_request(state, request, database=database, rng=rng)
 
 
-def apply_damage(state: GameState, source_player_id: int, target_player_id: int, amount: int) -> None:
+def apply_damage(state: GameState, source_player_id: int, target_player_id: int, amount: int) -> bool:
     target = state.players[target_player_id]
     target.health -= amount
     state.event_log.append(
@@ -369,6 +399,8 @@ def apply_damage(state: GameState, source_player_id: int, target_player_id: int,
     )
     if target.health <= 0:
         handle_player_death(state, target)
+        return True
+    return False
 
 
 def handle_player_death(state: GameState, player: PlayerState) -> None:
@@ -388,10 +420,20 @@ def handle_player_death(state: GameState, player: PlayerState) -> None:
 def has_unparsed_complex_text(card: CardDefinition) -> bool:
     lower = card.text.lower()
     simple_patterns = [
+        r"если .*?подох.*?возьми\s+\d+\s+карт\w*",
+        r"каждому\s+врагу\s+хилее\s+тебя",
+        r"правому\s+или\s+левому\s+врагу",
+        r"левому\s+или\s+правому\s+врагу",
+        r"(и\s+)?он\s+получает\s+вял\w+\s+палочк\w*",
+        r"получа\w+\s+вял\w+\s+палочк\w*",
+        r"сбрасывает\s+\d+\s+карт\w*",
         r"\+\d+\s*мощ\w*",
-        r"возьми\s+\d+\s+карт",
-        r"нанеси\s+\d+\s+урон",
+        r"возьми\s+\d+\s+карт\w*",
+        r"нанеси\s+(?:выбранному\s+(?:врагу|колдуну)\s+)?\d+\s+урон\w*",
+        r"нанеси\s+\d+\s+урон\w*",
         r"накрути\s+\d+\s+жизн",
+        r"выбранному\s+(врагу|колдуну)",
+        r"каждому\s+(врагу|колдуну)",
         r"атака:",
         r"защита:",
     ]

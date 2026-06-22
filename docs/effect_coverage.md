@@ -2,12 +2,12 @@
 
 - Total cards: 113
 - Implemented: 0
-- Implemented with tests: 2
-- Partial: 81
+- Implemented with tests: 12
+- Partial: 71
 - Not implemented: 28
 - No effect: 2
 - Data errors: 0
-- Percent implemented: 1.77%
+- Percent implemented: 10.62%
 - Percent implemented or partial: 75.22%
 
 ## Top Unimplemented

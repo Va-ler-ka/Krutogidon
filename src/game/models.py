@@ -109,9 +109,6 @@ class GameConfig:
     hand_size: int = 5
     market_size: int = 5
     legend_count: int | None = None
-    weak_wand_count: int = 40
-    wild_magic_count: int = 40
-    dead_wizard_token_limit: int = 20
     death_reset_health: int = 20
     max_turns: int = 500
 

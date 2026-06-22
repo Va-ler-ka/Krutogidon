@@ -9,8 +9,10 @@ pip install pymupdf pillow pytest
 python -m src.importers.run_import
 python -m src.importers.xlsx_cards
 python -m src.game.simulate --players 3 --games 10
+python -m src.game.validate_manifest
 python -m src.game.effect_coverage
 python -m src.game.simulate --players 3 --games 1 --seed 100 --replay-dir data/replays
+python -m src.game.replay_summary data/replays/<replay>.json
 pytest
 ```
 
@@ -50,6 +52,7 @@ pytest
 python -m src.importers.run_import
 python -m src.importers.xlsx_cards
 python -m src.game.simulate --players 3 --games 10
+python -m src.game.validate_manifest
 python -m src.game.effect_coverage
 python -m src.game.simulate --players 3 --games 1 --seed 100 --replay-dir data/replays
 python -m src.game.simulate --players 3 --games 1 --seed 100 --strict
@@ -92,3 +95,12 @@ python -m src.game.effect_coverage
 Markdown-версия сохраняется в `docs/effect_coverage.md`.
 
 `--strict` ожидаемо может падать на нереализованных эффектах. Это режим проверки полноты реализации, а не обычный режим симуляции.
+
+## Диагностика replay
+
+```powershell
+python -m src.game.simulate --players 3 --games 1 --seed 100 --replay-dir data/replays
+python -m src.game.replay_summary data/replays/<replay>.json
+```
+
+`replay_summary` печатает компактную JSON-сводку по seed, числу игроков, действиям, событиям, покупкам, атакам, защитам, смертям, победителям и coverage snapshot.

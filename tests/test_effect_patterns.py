@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import random
 
-from src.game.effects import ConditionalEffect, DestroyCard, DrawCards, GainCard, GiveWeakWand, Heal
-from src.game.models import GameConfig
+from src.game.effects import ConditionalEffect, DestroyCard, DrawCards, GainCard, GiveWeakWand, Heal, parse_basic_effect
+from src.game.instances import create_card_instance
+from src.game.models import CardDefinition, GameConfig
 from src.game.setup import setup_game
 
 
@@ -73,3 +74,53 @@ def test_conditional_effect_then_else() -> None:
     )
 
     assert player.health == before + 2
+
+
+def test_parsed_attack_can_make_each_enemy_discard() -> None:
+    state, database = setup_game(GameConfig(player_count=3, seed=76))
+    card = CardDefinition(
+        id="test_discard_attack",
+        name="Discard Attack",
+        card_class="Test",
+        text="Атака: каждый враг сбрасывает 1 карту.",
+        attack=True,
+    )
+    for player in state.players[1:]:
+        player.hand = [create_card_instance(state, database.by_name("Знак").id, owner_id=player.id, origin="test")]
+
+    parse_basic_effect(card).apply(
+        state=state,
+        player=state.players[0],
+        card=card,
+        rng=random.Random(1),
+        database=database,
+    )
+
+    assert all(len(player.hand) == 0 for player in state.players[1:])
+    assert all(len(player.discard) == 1 for player in state.players[1:])
+
+
+def test_parsed_attack_can_give_weak_wand_to_target() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=77))
+    card = CardDefinition(
+        id="test_weak_wand_attack",
+        name="Weak Wand Attack",
+        card_class="Test",
+        text="+1 мощь. Атака: нанеси выбранному врагу 3 урона, и он получает вялую палочку.",
+        power=1,
+        attack=True,
+    )
+    before_weak_wands = len(state.weak_wand_stack)
+
+    parse_basic_effect(card, target_player=1).apply(
+        state=state,
+        player=state.players[0],
+        card=card,
+        rng=random.Random(1),
+        database=database,
+    )
+
+    assert state.players[0].power == 1
+    assert state.players[1].health == 17
+    assert len(state.players[1].discard) == 1
+    assert len(state.weak_wand_stack) == before_weak_wands - 1

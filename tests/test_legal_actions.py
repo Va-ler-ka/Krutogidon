@@ -42,4 +42,4 @@ def test_attack_without_target_creates_pending_choice_in_three_player_game() -> 
 
     assert state.phase == GamePhase.CHOOSE_TARGET
     assert state.pending_choice is not None
-    assert len(engine.legal_actions()) == 2
+    assert len(engine.legal_actions()) == 3

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 
-from src.game.engine import GameEngine
+from src.game.engine import GameEngine, group_attack_order
 from src.game.enums import ActionType
 from src.game.instances import card_def_for
 from src.game.models import Action, GameConfig
@@ -73,3 +73,25 @@ def test_group_attack_logs_event_and_can_open_defense_window() -> None:
 
     assert any("Групповая атака легенды" in event for event in state.event_log)
     assert state.pending_choice is not None
+
+
+def test_group_attack_targets_all_wizards_starting_after_current_player() -> None:
+    state, database = setup_game(GameConfig(player_count=3, seed=72))
+    state.current_player_index = 1
+    engine = GameEngine(state, database)
+    legend_id = state.current_legend
+    assert legend_id is not None
+    legend_def = card_def_for(state, database, legend_id)
+    database.cards[legend_def.id] = replace(
+        legend_def,
+        text="Групповая атака: нанеси 1 урон каждому колдуну.",
+        group_attack=True,
+    )
+    for player in state.players:
+        player.hand = []
+
+    assert group_attack_order(state) == [2, 0, 1]
+
+    engine.resolve_group_attack(legend_id)
+
+    assert [player.health for player in state.players] == [19, 19, 19]

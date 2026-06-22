@@ -11,7 +11,7 @@ from .legal_actions import LegalActionGenerator
 from .models import Action, CardDatabase, EffectRequest, GameState, PendingChoice, PlayerState
 from .scoring import compute_winners
 from .setup import draw_cards, fill_market
-from .targeting import CHOSEN_ENEMY, needs_target_choice, target_candidates
+from .targeting import CHOSEN_ENEMY, needs_target_choice, parse_selector_from_text, target_candidates
 from .triggers import fire_trigger
 
 
@@ -69,7 +69,9 @@ class GameEngine:
             player.played.append(instance_id)
         self.state.event_log.append(f"{player.name} играет {card.name}")
 
-        if card.attack and action.target_player is None and needs_target_choice(self.state, player.id, CHOSEN_ENEMY):
+        attack_text = parse_card_text(card.text).attack_text or ""
+        attack_selector = parse_selector_from_text(attack_text)
+        if card.attack and action.target_player is None and needs_target_choice(self.state, player.id, attack_selector):
             apply_card_effect(
                 state=self.state,
                 player=player,
@@ -85,13 +87,13 @@ class GameEngine:
                     actor_id=player.id,
                     source_player_id=player.id,
                     source_card_id=card.id,
-                candidates=target_candidates(self.state, player.id, CHOSEN_ENEMY),
+                candidates=target_candidates(self.state, player.id, attack_selector),
                 effect=EffectRequest(
                     source_card_id=card.id,
                     source_player_id=player.id,
                     effect_type="card_attack",
                     amount=extract_damage_amount(card.text),
-                    selector=CHOSEN_ENEMY,
+                    selector=attack_selector,
                     is_attack=True,
                 ),
                 prompt=f"Choose target for {card.name}",
@@ -272,7 +274,7 @@ class GameEngine:
             self.state.event_log.append(f"{legend.name}: group attack not_implemented")
             return
         actor_id = self.state.current_player.id
-        targets = [player.id for player in self.state.players if player.id != actor_id]
+        targets = group_attack_order(self.state)
         request = EffectRequest(
             source_card_id=legend.id,
             source_player_id=actor_id,
@@ -322,14 +324,24 @@ def actions_match(actual: Action, legal: Action) -> bool:
         return False
     if actual.market_index is not None and actual.market_index != legal.market_index:
         return False
+    target_candidates = legal.payload.get("target_candidates", [])
+    if actual.target_player is not None and target_candidates and actual.target_player in target_candidates:
+        return True
     if actual.target_player is not None and actual.target_player != legal.target_player:
         return False
     return True
 
 
 def extract_damage_amount(text: str) -> int:
-    match = re.search(r"нанеси\s+(\d+)\s+урон", text.lower())
+    match = re.search(r"нанеси\s+(\d+)\s+урон\w*", text.lower())
     return int(match.group(1)) if match else 0
+
+
+def group_attack_order(state: GameState) -> list[int]:
+    if not state.players:
+        return []
+    start = (state.current_player_index + 1) % len(state.players)
+    return [(start + offset) % len(state.players) for offset in range(len(state.players))]
 
 
 def choose_default_target(state: GameState, player: PlayerState) -> int | None:

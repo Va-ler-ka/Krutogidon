@@ -1,7 +1,17 @@
 from __future__ import annotations
 
 from src.game.data import load_card_database
-from src.game.deck_manifest import dead_wizard_token_count, load_deck_manifest, validate_deck_manifest
+from src.game.deck_manifest import (
+    EXPECTED_DOUBLE_PHYSICAL_COUNT,
+    EXPECTED_DOUBLE_UNIQUE_COUNT,
+    EXPECTED_MAIN_DECK_PHYSICAL_COUNT,
+    EXPECTED_MAYHEM_UNIQUE_COUNT,
+    EXPECTED_SINGLETON_NON_MAYHEM_COUNT,
+    dead_wizard_token_count,
+    load_deck_manifest,
+    validate_deck_manifest,
+    validate_main_deck_manifest,
+)
 from src.game.instances import card_id_for
 from src.game.models import GameConfig
 from src.game.setup import setup_game
@@ -52,3 +62,23 @@ def test_wild_magic_and_weak_wand_counts() -> None:
 
     assert len(state.wild_magic_stack) == 16
     assert len(state.weak_wand_stack) == 16
+
+
+def test_main_deck_manifest_matches_physical_deck_rules() -> None:
+    database = load_card_database()
+    summary = validate_main_deck_manifest(database.manifest, database)
+
+    assert summary["errors"] == []
+    assert summary["main_deck_physical_count"] == EXPECTED_MAIN_DECK_PHYSICAL_COUNT
+    assert len(summary["mayhem"]) == EXPECTED_MAYHEM_UNIQUE_COUNT
+    assert len(summary["singleton_non_mayhem"]) == EXPECTED_SINGLETON_NON_MAYHEM_COUNT
+    assert len(summary["double"]) == EXPECTED_DOUBLE_UNIQUE_COUNT
+    assert summary["double_physical_count"] == EXPECTED_DOUBLE_PHYSICAL_COUNT
+
+
+def test_game_config_no_longer_overrides_manifest_counts() -> None:
+    config = GameConfig()
+
+    assert not hasattr(config, "weak_wand_count")
+    assert not hasattr(config, "wild_magic_count")
+    assert not hasattr(config, "dead_wizard_token_limit")
