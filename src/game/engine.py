@@ -8,7 +8,16 @@ from .effects import apply_card_effect, decline_defense, use_defense_card
 from .enums import ActionType, GamePhase
 from .instances import card_def_for, card_id_for, create_card_instance, find_instance_for_card, set_owner
 from .legal_actions import LegalActionGenerator
-from .models import Action, CardDatabase, EffectRequest, GameState, PendingChoice, PlayerState, SourceKind
+from .models import (
+    Action,
+    CardDatabase,
+    EffectRequest,
+    GameState,
+    PendingChoice,
+    PendingChoiceType,
+    PlayerState,
+    SourceKind,
+)
 from .scoring import compute_winners
 from .setup import draw_cards, fill_market
 from .targeting import CHOSEN_ENEMY, needs_target_choice, parse_selector_from_text, target_candidates
@@ -53,6 +62,9 @@ class GameEngine:
             self.end_turn()
         else:
             raise ValueError(f"Unsupported action: {action.type}")
+        if self.state.pending_market_refill and self.state.phase == GamePhase.MAIN and not self.state.game_over:
+            self.state.pending_market_refill = False
+            fill_market(self.state, self.database, self.rng)
         if self.state.pending_turn_advance and self.state.phase == GamePhase.MAIN and not self.state.game_over:
             self._advance_to_next_turn()
         self.check_game_over()
@@ -115,11 +127,14 @@ class GameEngine:
             target_player=action.target_player,
             database=self.database,
         )
-        if self.state.phase != GamePhase.DEFENSE_WINDOW:
+        if self.state.phase not in {GamePhase.DEFENSE_WINDOW, GamePhase.CHOOSE_TARGET}:
             self.state.phase = GamePhase.MAIN
 
     def choose_target(self, action: Action) -> None:
         choice = self.state.pending_choice
+        if choice is not None and choice.options:
+            self.resolve_pending_option(action)
+            return
         if choice is None or choice.effect is None:
             raise ValueError("No target choice is pending")
         if action.target_player not in choice.candidates:
@@ -140,8 +155,116 @@ class GameEngine:
                 database=self.database,
                 include_attack=True,
             )
-        if self.state.phase != GamePhase.DEFENSE_WINDOW:
+        if self.state.phase not in {GamePhase.DEFENSE_WINDOW, GamePhase.CHOOSE_TARGET}:
             self.state.phase = GamePhase.MAIN
+
+    def resolve_pending_option(self, action: Action) -> None:
+        choice = self.state.pending_choice
+        if choice is None:
+            raise ValueError("No pending choice")
+        option = next(
+            (
+                candidate
+                for candidate in choice.options
+                if candidate.get("id") == action.payload.get("option_id")
+            ),
+            None,
+        )
+        if option is None:
+            raise ValueError("Pending choice option is not legal")
+        self.state.event_log.append(
+            f"pending_choice_resolved: {choice.choice_type} option={option.get('id')} "
+            f"source_kind={choice.source_kind.value if choice.source_kind else None}"
+        )
+        if choice.choice_type == PendingChoiceType.TROPHY_DISCARD:
+            self.resolve_trophy_discard(choice, option)
+        elif choice.choice_type == PendingChoiceType.DESTROY_CARD:
+            self.resolve_destroy_choice(choice, option)
+        elif choice.choice_type == PendingChoiceType.DISCARD_CARD:
+            self.resolve_discard_choice(choice, option)
+        elif choice.choice_type == PendingChoiceType.GAIN_CARD:
+            self.resolve_gain_choice(choice, option)
+        elif choice.choice_type == PendingChoiceType.CHOOSE_MARKET_ATTACK_TARGET:
+            self.resolve_market_attack_target(choice, option)
+        else:
+            raise ValueError(f"Unsupported pending choice type: {choice.choice_type}")
+
+    def resolve_trophy_discard(self, choice: PendingChoice, option: dict) -> None:
+        player = self.state.players[choice.actor_id]
+        instance_id = option["instance_id"]
+        if instance_id not in player.hand:
+            raise ValueError("Trophy discard card is not in hand")
+        player.hand.remove(instance_id)
+        player.discard.append(instance_id)
+        self.state.pending_choice = None
+        self.state.event_log.append(f"trophy_discard: {player.name} discards {instance_id}")
+        self.continue_end_turn_after_cleanup()
+
+    def resolve_destroy_choice(self, choice: PendingChoice, option: dict) -> None:
+        player = self.state.players[choice.actor_id]
+        instance_id = option["instance_id"]
+        zone = option.get("zone")
+        refs = player.hand if zone == "hand" else player.discard
+        if instance_id not in refs:
+            raise ValueError("Destroy choice card is not in selected zone")
+        refs.remove(instance_id)
+        player.destroyed.append(instance_id)
+        self.state.pending_choice = None
+        self.state.phase = GamePhase.MAIN
+        self.state.event_log.append(f"pending_destroy: {player.name} destroys {instance_id} from {zone}")
+        self.continue_pending_choice_metadata(choice)
+
+    def resolve_discard_choice(self, choice: PendingChoice, option: dict) -> None:
+        player = self.state.players[choice.actor_id]
+        instance_id = option["instance_id"]
+        if instance_id not in player.hand:
+            raise ValueError("Discard choice card is not in hand")
+        player.hand.remove(instance_id)
+        player.discard.append(instance_id)
+        self.state.pending_choice = None
+        self.state.phase = GamePhase.MAIN
+        self.state.event_log.append(f"pending_discard: {player.name} discards {instance_id}")
+        self.continue_pending_choice_metadata(choice)
+
+    def resolve_gain_choice(self, choice: PendingChoice, option: dict) -> None:
+        player = self.state.players[choice.actor_id]
+        market_index = option["market_index"]
+        if market_index >= len(self.state.market):
+            raise ValueError("Gain choice market index is invalid")
+        if option.get("instance_id") and option["instance_id"] != self.state.market[market_index]:
+            raise ValueError("Gain choice market card no longer matches selected option")
+        instance_id = self.state.market.pop(market_index)
+        if player.next_gained_card_to_top_deck:
+            player.deck.append(instance_id)
+            player.next_gained_card_to_top_deck = False
+        else:
+            player.discard.append(instance_id)
+        self.state.pending_choice = None
+        self.state.phase = GamePhase.MAIN
+        self.state.event_log.append(f"pending_gain: {player.name} gains {instance_id} from market")
+        fill_market(self.state, self.database, self.rng)
+
+    def resolve_market_attack_target(self, choice: PendingChoice, option: dict) -> None:
+        request = choice.effect
+        if request is None:
+            raise ValueError("Market attack choice has no effect request")
+        request.target_player_ids = [option["target_player"]]
+        self.state.pending_choice = None
+        self.state.phase = GamePhase.RESOLVING_EFFECT
+        from .effects import resolve_damage_request
+
+        resolve_damage_request(self.state, request, database=self.database, rng=self.rng)
+        if self.state.phase not in {GamePhase.DEFENSE_WINDOW, GamePhase.CHOOSE_TARGET}:
+            self.state.phase = GamePhase.MAIN
+        self.continue_pending_choice_metadata(choice)
+
+    def continue_pending_choice_metadata(self, choice: PendingChoice) -> None:
+        if self.state.phase in {GamePhase.DEFENSE_WINDOW, GamePhase.CHOOSE_TARGET}:
+            return
+        if choice.metadata.get("continue_market_attack_queue"):
+            from .mayhem import continue_market_attack_queue
+
+            continue_market_attack_queue(self.state, self.database, self.rng)
 
     def use_defense(self, action: Action) -> None:
         source = action.payload.get("defense_source", "hand")
@@ -181,7 +304,8 @@ class GameEngine:
         self.state.event_log.append(f"{player.name} покупает {card.name}")
         fire_trigger(self.state, self.database, "on_card_bought", player.id, instance_id)
         fill_market(self.state, self.database, self.rng)
-        self.state.phase = GamePhase.MAIN
+        if self.state.phase not in {GamePhase.DEFENSE_WINDOW, GamePhase.CHOOSE_TARGET}:
+            self.state.phase = GamePhase.MAIN
 
     def defeat_legend(self) -> None:
         player = self.state.current_player
@@ -246,8 +370,12 @@ class GameEngine:
         player.has_defeated_legend_this_turn = False
         draw_cards(self.state, player, self.state.config.hand_size, self.rng)
         if self.state.trophy_controller_id == player.id:
-            self.apply_trophy_end_turn(player)
+            self.create_trophy_discard_choice(player)
+            return
 
+        self.continue_end_turn_after_cleanup()
+
+    def continue_end_turn_after_cleanup(self) -> None:
         if self.state.current_legend is None and self.state.legend_deck:
             self.state.phase = GamePhase.LEGEND_REVEAL
             self.state.current_legend = self.state.legend_deck.pop(0)
@@ -266,20 +394,38 @@ class GameEngine:
 
         self._advance_to_next_turn()
 
-    def apply_trophy_end_turn(self, player: PlayerState) -> None:
-        before = len(player.hand)
+    def create_trophy_discard_choice(self, player: PlayerState) -> None:
         draw_cards(self.state, player, 1, self.rng)
-        if player.hand:
-            discarded = player.hand.pop()
-            player.discard.append(discarded)
-            self.state.event_log.append(
-                f"trophy_end_turn: {player.name} controls Main Prize, draws to 6 and auto-discards {discarded}"
-            )
-        else:
+        if not player.hand:
             self.state.event_log.append(
                 f"trophy_end_turn: {player.name} controls Main Prize, no card available to discard"
             )
-        self.state.event_log.append(f"trophy_end_turn_draw_delta={len(player.hand) - before}")
+            self.continue_end_turn_after_cleanup()
+            return
+        options = [
+            {
+                "id": f"discard_{index}",
+                "instance_id": instance_id,
+                "card_id": card_id_for(self.state, instance_id),
+                "zone": "hand",
+                "description": f"Discard {card_def_for(self.state, self.database, instance_id).name}",
+            }
+            for index, instance_id in enumerate(player.hand)
+        ]
+        self.state.phase = GamePhase.CHOOSE_TARGET
+        self.state.pending_choice = PendingChoice(
+            choice_type=PendingChoiceType.TROPHY_DISCARD,
+            actor_id=player.id,
+            choice_id=f"choice_{self.state.turn_number}_trophy_discard",
+            source_kind=SourceKind.SYSTEM,
+            options=options,
+            prompt="Discard one card after Main Prize draw",
+            metadata={"continue": "end_turn_after_trophy"},
+        )
+        self.state.event_log.append(
+            f"pending_choice_created: {PendingChoiceType.TROPHY_DISCARD.value} "
+            f"options={len(options)} source_kind={SourceKind.SYSTEM.value}"
+        )
 
     def _advance_to_next_turn(self) -> None:
         self.state.pending_turn_advance = False
@@ -357,6 +503,8 @@ def actions_match(actual: Action, legal: Action) -> bool:
     if actual.card_id is not None and actual.card_id not in {legal.card_id, legal.instance_id}:
         return False
     if actual.market_index is not None and actual.market_index != legal.market_index:
+        return False
+    if actual.payload.get("option_id") is not None and actual.payload.get("option_id") != legal.payload.get("option_id"):
         return False
     target_candidates = legal.payload.get("target_candidates", [])
     if actual.target_player is not None and target_candidates and actual.target_player in target_candidates:

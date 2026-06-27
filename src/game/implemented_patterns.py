@@ -2,6 +2,7 @@ from __future__ import annotations
 
 
 IMPLEMENTED_WITH_TESTS_CARD_IDS = {
+    "беспредел_10",
     "волшебник_солнцеликий",
     "волшебник_змееволк_позорный",
     "волшебник_абракадабрадор",

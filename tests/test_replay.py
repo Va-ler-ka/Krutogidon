@@ -47,6 +47,15 @@ def test_replay_summary_exposes_stage_2_6_2_diagnostics(tmp_path) -> None:
     assert "defenses_declined_count" in summary
     assert "redirects_count" in summary
     assert "pending_choices_count" in summary
+    assert "pending_choices_created_count" in summary
+    assert "pending_choices_resolved_count" in summary
+    assert "pending_choices_by_type" in summary
+    assert "auto_choices_count" in summary
+    assert "mayhem_handlers_used" in summary
+    assert "mayhem_unimplemented_count" in summary
+    assert "mayhem_partial_unsafe_count" in summary
+    assert "trophy_discard_choices_count" in summary
+    assert "destroy_discard_gain_choices_count" in summary
     assert "partial_unsafe_count" in summary
     assert "not_implemented_count" in summary
     assert "top_partial_unsafe_cards" in summary

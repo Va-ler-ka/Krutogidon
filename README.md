@@ -26,9 +26,11 @@ pytest
 - Ручная таблица `data/processed/cards_full.xlsx` используется как источник игровых данных для движка.
 - Headless-движок умеет запускать партии между RandomAgent-ботами.
 - В состоянии есть явные фазы, pending choice и defense window.
+- Pending choice теперь используется не только для выбора цели, но и для trophy discard, destroy/discard/gain и части mayhem-выборов.
 - Legal actions генерируются централизованно через `LegalActionGenerator`.
 - Простые эффекты работают через primitive effects: мощь, добор, лечение, урон.
 - Есть базовая поддержка targeting, защит, постоянок, беспределов, смерти и жетонов дохлых колдунов.
+- `беспредел_10` разложен через mayhem handler: он разыгрывает attack-секции карт с барахолки как `MARKET_MAYHEM`, без выдачи Главного приза за нейтральные смерти.
 - Отчет покрытия эффектов сохраняется в `data/processed/effect_coverage.json`.
 - Стопки собираются из `data/processed/deck_manifest.json`.
 - Игровые зоны используют физические копии карт `CardInstance`.
@@ -104,4 +106,4 @@ python -m src.game.replay_summary data/replays/<replay>.json
 ```
 
 `replay_summary` печатает компактную JSON-сводку по seed, числу игроков, действиям, событиям, покупкам, атакам, защитам, смертям, победителям и coverage snapshot.
-После Stage 2.6.2 в сводку также входят `source_kind`, смерти по источникам, смены Главного приза, group attack, defense/redirect и partial/not_implemented счетчики.
+После Stage 2.6.3 в сводку также входят `source_kind`, смерти по источникам, смены Главного приза, group attack, defense/redirect, pending-choice counters, mayhem handler diagnostics и partial/not_implemented счетчики.

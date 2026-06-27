@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import random
 
+from src.game.engine import GameEngine
+from src.game.enums import GamePhase
 from src.game.effects import ConditionalEffect, DestroyCard, DrawCards, GainCard, GiveWeakWand, Heal, parse_basic_effect
 from src.game.instances import create_card_instance
-from src.game.models import CardDefinition, GameConfig
+from src.game.models import CardDefinition, GameConfig, PendingChoiceType
 from src.game.setup import setup_game
 
 
@@ -41,23 +43,68 @@ def test_destroy_from_discard() -> None:
 
 def test_gain_card_from_market() -> None:
     state, database = setup_game(GameConfig(player_count=2, seed=65))
+    engine = GameEngine(state, database)
     player = state.players[0]
     target = state.market[0]
 
     GainCard("market").apply(state=state, player=player, card=None, rng=random.Random(1), database=database)
+    engine.step(engine.legal_actions()[0])
 
     assert target in player.discard
 
 
 def test_next_gained_card_to_top_deck() -> None:
     state, database = setup_game(GameConfig(player_count=2, seed=66))
+    engine = GameEngine(state, database)
     player = state.players[0]
     player.next_gained_card_to_top_deck = True
     target = state.market[0]
 
     GainCard("market").apply(state=state, player=player, card=None, rng=random.Random(1), database=database)
+    engine.step(engine.legal_actions()[0])
 
     assert player.deck[-1] == target
+
+
+def test_destroy_from_hand_creates_pending_choice_when_multiple_targets() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=63))
+    player = state.players[0]
+    player.hand = player.hand[:2]
+
+    DestroyCard("hand").apply(state=state, player=player, card=None, rng=random.Random(1), database=database)
+
+    assert state.phase == GamePhase.CHOOSE_TARGET
+    assert state.pending_choice is not None
+    assert state.pending_choice.choice_type == PendingChoiceType.DESTROY_CARD
+    assert len(state.pending_choice.options) == 2
+
+
+def test_pending_destroy_removes_selected_instance() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=63))
+    engine = GameEngine(state, database)
+    player = state.players[0]
+    player.hand = player.hand[:2]
+
+    DestroyCard("hand").apply(state=state, player=player, card=None, rng=random.Random(1), database=database)
+    action = engine.legal_actions()[1]
+    selected = action.instance_id
+    engine.step(action)
+
+    assert selected in player.destroyed
+    assert selected not in player.hand
+    assert state.pending_choice is None
+
+
+def test_gain_card_from_market_creates_pending_choice() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=65))
+    player = state.players[0]
+
+    GainCard("market").apply(state=state, player=player, card=None, rng=random.Random(1), database=database)
+
+    assert state.phase == GamePhase.CHOOSE_TARGET
+    assert state.pending_choice is not None
+    assert state.pending_choice.choice_type == PendingChoiceType.GAIN_CARD
+    assert len(state.pending_choice.options) == len(state.market)
 
 
 def test_conditional_effect_then_else() -> None:

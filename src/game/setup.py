@@ -154,6 +154,9 @@ def fill_market(
             state.mayhem_discard.append(instance_id)
             if resolve_mayhem_effects:
                 resolve_mayhem(state, database, instance_id, rng)
+                if state.pending_choice is not None or state.phase.name in {"DEFENSE_WINDOW", "CHOOSE_TARGET"}:
+                    state.pending_market_refill = True
+                    return
             else:
                 state.event_log.append(f"Беспредел раскрыт при начальном setup без эффекта: {card.name}")
             continue

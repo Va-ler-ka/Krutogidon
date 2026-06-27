@@ -8,7 +8,7 @@ from typing import Protocol
 from .enums import GamePhase
 from .card_text import parse_card_text
 from .instances import card_def_for, card_id_for
-from .models import CardDefinition, EffectRequest, GameState, PendingChoice, PlayerState, SourceKind
+from .models import CardDefinition, EffectRequest, GameState, PendingChoice, PendingChoiceType, PlayerState, SourceKind
 from .setup import draw_cards
 from .targeting import ALL_ENEMIES, CHOSEN_ENEMY, parse_selector_from_text, target_candidates
 
@@ -107,6 +107,31 @@ class DiscardCards:
         targets = target_candidates(state, player.id, self.selector)
         for target_id in targets:
             target = state.players[target_id]
+            if self.count == 1 and len(target.hand) > 1:
+                state.phase = GamePhase.CHOOSE_TARGET
+                state.pending_choice = PendingChoice(
+                    choice_type=PendingChoiceType.DISCARD_CARD,
+                    actor_id=target.id,
+                    choice_id=f"choice_{len(state.event_log)}_discard",
+                    source_player_id=player.id,
+                    source_card_id=card.id if card else None,
+                    source_kind=SourceKind.PLAYER_CARD,
+                    options=[
+                        {
+                            "id": f"discard_{index}",
+                            "instance_id": instance_id,
+                            "card_id": card_id_for(state, instance_id),
+                            "zone": "hand",
+                            "description": f"Discard {card_def_for(state, database, instance_id).name}",
+                        }
+                        for index, instance_id in enumerate(target.hand)
+                    ],
+                    metadata={"count": self.count},
+                )
+                state.event_log.append(
+                    f"pending_choice_created: {PendingChoiceType.DISCARD_CARD.value} options={len(target.hand)}"
+                )
+                return EffectResult(True)
             for _ in range(min(self.count, len(target.hand))):
                 target.discard.append(target.hand.pop())
         return EffectResult(True)
@@ -117,19 +142,32 @@ class DestroyCard:
     zone_selector: str
 
     def apply(self, *, state: GameState, player: PlayerState, card: CardDefinition | None, rng: random.Random, database=None) -> EffectResult:
-        if self.zone_selector == "hand" and player.hand:
-            player.destroyed.append(player.hand.pop())
+        options: list[dict] = []
+        if self.zone_selector in {"hand", "hand_or_discard"}:
+            options.extend(choice_options_for_zone(state, database, player.hand, "hand", "Destroy"))
+        if self.zone_selector in {"discard", "hand_or_discard"}:
+            options.extend(choice_options_for_zone(state, database, player.discard, "discard", "Destroy"))
+        if len(options) == 1:
+            option = options[0]
+            refs = player.hand if option["zone"] == "hand" else player.discard
+            refs.remove(option["instance_id"])
+            player.destroyed.append(option["instance_id"])
             return EffectResult(True)
-        if self.zone_selector == "discard" and player.discard:
-            player.destroyed.append(player.discard.pop())
+        if len(options) > 1:
+            state.phase = GamePhase.CHOOSE_TARGET
+            state.pending_choice = PendingChoice(
+                choice_type=PendingChoiceType.DESTROY_CARD,
+                actor_id=player.id,
+                choice_id=f"choice_{len(state.event_log)}_destroy",
+                source_player_id=player.id,
+                source_card_id=card.id if card else None,
+                source_kind=SourceKind.PLAYER_CARD,
+                options=options,
+            )
+            state.event_log.append(
+                f"pending_choice_created: {PendingChoiceType.DESTROY_CARD.value} options={len(options)}"
+            )
             return EffectResult(True)
-        if self.zone_selector == "hand_or_discard":
-            if player.hand:
-                player.destroyed.append(player.hand.pop())
-                return EffectResult(True)
-            if player.discard:
-                player.destroyed.append(player.discard.pop())
-                return EffectResult(True)
         state.event_log.append(f"DestroyCard({self.zone_selector}) not_implemented")
         return EffectResult(False, "destroy card target unavailable")
 
@@ -140,6 +178,30 @@ class GainCard:
 
     def apply(self, *, state: GameState, player: PlayerState, card: CardDefinition | None, rng: random.Random, database=None) -> EffectResult:
         if self.source_selector == "market" and state.market:
+            if len(state.market) > 1:
+                state.phase = GamePhase.CHOOSE_TARGET
+                state.pending_choice = PendingChoice(
+                    choice_type=PendingChoiceType.GAIN_CARD,
+                    actor_id=player.id,
+                    choice_id=f"choice_{len(state.event_log)}_gain",
+                    source_player_id=player.id,
+                    source_card_id=card.id if card else None,
+                    source_kind=SourceKind.PLAYER_CARD,
+                    options=[
+                        {
+                            "id": f"gain_{index}",
+                            "market_index": index,
+                            "instance_id": instance_id,
+                            "card_id": card_id_for(state, instance_id),
+                            "description": f"Gain {card_def_for(state, database, instance_id).name}",
+                        }
+                        for index, instance_id in enumerate(state.market)
+                    ],
+                )
+                state.event_log.append(
+                    f"pending_choice_created: {PendingChoiceType.GAIN_CARD.value} options={len(state.market)}"
+                )
+                return EffectResult(True)
             instance_id = state.market.pop(0)
             if player.next_gained_card_to_top_deck:
                 player.deck.append(instance_id)
@@ -149,6 +211,25 @@ class GainCard:
             return EffectResult(True)
         state.event_log.append(f"GainCard({self.source_selector}) not_implemented")
         return EffectResult(False, "gain card not implemented")
+
+
+def choice_options_for_zone(
+    state: GameState,
+    database,
+    refs: list[str],
+    zone: str,
+    verb: str,
+) -> list[dict]:
+    return [
+        {
+            "id": f"{zone}_{index}",
+            "instance_id": instance_id,
+            "card_id": card_id_for(state, instance_id),
+            "zone": zone,
+            "description": f"{verb} {card_def_for(state, database, instance_id).name} from {zone}",
+        }
+        for index, instance_id in enumerate(refs)
+    ]
 
 
 @dataclass(frozen=True)
@@ -336,6 +417,11 @@ def resolve_damage_request(state: GameState, request: EffectRequest, *, database
         request.current_target_index += 1
     state.pending_choice = None
     state.phase = GamePhase.MAIN
+    if request.metadata.get("continue_market_attack_queue") and state.pending_market_attack_queue:
+        from .mayhem import continue_market_attack_queue
+
+        continue_market_attack_queue(state, database, rng)
+        return
     if request.metadata.get("advance_turn_after_resolution"):
         state.pending_turn_advance = True
 

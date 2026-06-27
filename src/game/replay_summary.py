@@ -22,6 +22,8 @@ def summarize_replay(payload: dict[str, Any]) -> dict[str, Any]:
 
     event_text = "\n".join(str(event) for event in events).lower()
     source_kind_counts = Counter(extract_source_kinds(events))
+    pending_choice_types = Counter(extract_pending_choice_types(events))
+    mayhem_handlers = Counter(extract_mayhem_handlers(events))
     summary = {
         "seed": payload.get("seed"),
         "git_commit": payload.get("git_commit"),
@@ -48,6 +50,19 @@ def summarize_replay(payload: dict[str, Any]) -> dict[str, Any]:
         "defenses_declined_count": action_types.get("decline_defense", 0),
         "redirects_count": count_any(event_text, ["redirected attack", "redirect ignored"]),
         "pending_choices_count": action_types.get("choose_target", 0),
+        "pending_choices_created_count": count_any(event_text, ["pending_choice_created"]),
+        "pending_choices_resolved_count": count_any(event_text, ["pending_choice_resolved"]),
+        "pending_choices_by_type": dict(sorted(pending_choice_types.items())),
+        "auto_choices_count": count_any(event_text, ["auto_choice", "auto-discard"]),
+        "mayhem_handlers_used": dict(sorted(mayhem_handlers.items())),
+        "mayhem_unimplemented_count": count_any(event_text, ["mayhem not_implemented"]),
+        "mayhem_partial_unsafe_count": count_any(event_text, ["partial_unsafe"]),
+        "trophy_discard_choices_count": pending_choice_types.get("trophy_discard", 0),
+        "destroy_discard_gain_choices_count": (
+            pending_choice_types.get("destroy_card", 0)
+            + pending_choice_types.get("discard_card", 0)
+            + pending_choice_types.get("gain_card", 0)
+        ),
         "deaths_count": count_any(event_text, ["receives dead wizard token", "жетон дохлого колдуна"]),
         "mayhems_revealed_count": count_any(event_text, ["беспредел раскрыт", "беспредел раскрыт"]),
         "legends_defeated_count": count_any(event_text, ["побеждает легенду", "defeats legend"]),
@@ -85,6 +100,30 @@ def extract_source_kinds(events: list[Any]) -> list[str]:
         if "dies" not in text and "dead wizard token" not in text:
             continue
         result.extend(re.findall(r"source_kind=([a-z_]+)", text))
+    return result
+
+
+def extract_pending_choice_types(events: list[Any]) -> list[str]:
+    result: list[str] = []
+    for event in events:
+        text = str(event)
+        if "pending_choice_created:" not in text:
+            continue
+        match = re.search(r"pending_choice_created:\s*([a-z_]+)", text)
+        if match:
+            result.append(match.group(1))
+    return result
+
+
+def extract_mayhem_handlers(events: list[Any]) -> list[str]:
+    result: list[str] = []
+    for event in events:
+        text = str(event)
+        if "mayhem_handler_used:" not in text:
+            continue
+        match = re.search(r"handler=([a-z_]+)", text)
+        if match:
+            result.append(match.group(1))
     return result
 
 

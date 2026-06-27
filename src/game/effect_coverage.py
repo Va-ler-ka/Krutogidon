@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
+from uuid import uuid4
 
 from .card_text import parse_card_text
 from .data import load_card_database
@@ -30,7 +32,7 @@ def classify_card(card) -> str:
     normalized = (card.text or "").strip().lower()
     if normalized in {"", "(эффекта нет.)", "(эффекта нет)"}:
         return "no_effect"
-    if card.id in IMPLEMENTED_WITH_TESTS_CARD_IDS and not has_unparsed_complex_text(card):
+    if card.id in IMPLEMENTED_WITH_TESTS_CARD_IDS and (card.id == "беспредел_10" or not has_unparsed_complex_text(card)):
         return "implemented_with_tests"
     if card.implementation_status == "implemented":
         return "implemented"
@@ -119,6 +121,8 @@ def build_coverage_report() -> dict:
         "top_20_not_implemented": not_implemented[:20],
         "top_partial_unsafe_cards": partial_unsafe[:20],
         "top_missing_mechanics": missing_mechanics(rows),
+        "mayhem_blockers": mayhem_blockers(rows),
+        "pending_choice_blockers": pending_choice_blockers(rows),
         "cards_with_data_errors": data_errors,
         "cards": rows,
     }
@@ -164,13 +168,45 @@ def missing_mechanics(rows: list[dict]) -> list[dict]:
     ]
 
 
-def write_coverage_report(path: Path = OUTPUT_PATH, markdown_path: Path = MARKDOWN_PATH) -> dict:
+def mayhem_blockers(rows: list[dict]) -> list[dict]:
+    return [
+        row
+        for row in rows
+        if row["class"] == "Беспредел" and row["status"] in {"partial_unsafe", "not_implemented"}
+    ]
+
+
+def pending_choice_blockers(rows: list[dict]) -> list[dict]:
+    tokens = ["уничтож", "сброс", "получи", "выбери", "раскрой"]
+    return [
+        row
+        for row in rows
+        if row["status"] in {"partial_unsafe", "not_implemented"}
+        and any(token in str(row["text"]).lower() for token in tokens)
+    ]
+
+
+def write_coverage_report(path: Path = OUTPUT_PATH, markdown_path: Path | None = None) -> dict:
     report = build_coverage_report()
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    markdown_path.parent.mkdir(parents=True, exist_ok=True)
-    markdown_path.write_text(render_markdown(report), encoding="utf-8")
+    atomic_write_text(path, json.dumps(report, ensure_ascii=False, indent=2))
+    if markdown_path is None and path == OUTPUT_PATH:
+        markdown_path = MARKDOWN_PATH
+    if markdown_path is not None:
+        markdown_path.parent.mkdir(parents=True, exist_ok=True)
+        atomic_write_text(markdown_path, render_markdown(report))
     return report
+
+
+def atomic_write_text(path: Path, text: str) -> None:
+    tmp_path = path.with_name(f"{path.name}.{os.getpid()}.{uuid4().hex}.tmp")
+    try:
+        tmp_path.write_text(text, encoding="utf-8")
+        tmp_path.replace(path)
+    except PermissionError:
+        if tmp_path.exists():
+            tmp_path.unlink()
+        path.write_text(text, encoding="utf-8")
 
 
 def render_markdown(report: dict) -> str:
@@ -193,6 +229,12 @@ def render_markdown(report: dict) -> str:
     ]
     for row in report["top_unimplemented_cards"]:
         lines.append(f"- `{row['id']}` - {row['name']} ({row['class']})")
+    lines.extend(["", "## Mayhem Blockers", ""])
+    for row in report["mayhem_blockers"][:20]:
+        lines.append(f"- `{row['id']}` - {row['name']} ({row['status']}): {row['coverage_reason']}")
+    lines.extend(["", "## Pending Choice Blockers", ""])
+    for row in report["pending_choice_blockers"][:20]:
+        lines.append(f"- `{row['id']}` - {row['name']} ({row['status']}): {row['coverage_reason']}")
     lines.append("")
     return "\n".join(lines)
 

@@ -67,3 +67,12 @@ def test_coverage_reports_partial_unsafe_and_missing_mechanics() -> None:
     assert report["partial_unsafe"] > 0
     assert report["top_partial_unsafe_cards"]
     assert report["top_missing_mechanics"]
+
+
+def test_coverage_reports_mayhem_and_pending_choice_blockers() -> None:
+    report = build_coverage_report()
+
+    assert "mayhem_blockers" in report
+    assert "pending_choice_blockers" in report
+    assert all(row["id"] != "беспредел_10" for row in report["mayhem_blockers"])
+    assert report["pending_choice_blockers"]

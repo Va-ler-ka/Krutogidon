@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from src.importers.xlsx_cards import load_cards_database, write_cards_full_json
+from src.importers.xlsx_cards import load_cards_database
 
 from .deck_manifest import load_deck_manifest, validate_deck_manifest
 from .models import CardDatabase, CardDefinition
@@ -13,7 +13,6 @@ DEFAULT_XLSX = Path(__file__).resolve().parents[2] / "data" / "processed" / "car
 
 def load_card_database(path: Path = DEFAULT_XLSX) -> CardDatabase:
     extracted = load_cards_database(path)
-    write_cards_full_json(extracted)
 
     cards: dict[str, CardDefinition] = {}
     legends: list[str] = []

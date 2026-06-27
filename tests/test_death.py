@@ -3,7 +3,8 @@ from __future__ import annotations
 from src.game.engine import GameEngine
 from src.game.enums import ActionType, GamePhase
 from src.game.effects import apply_damage
-from src.game.models import Action, EffectRequest, GameConfig, SourceKind
+from src.game.instances import create_card_instance
+from src.game.models import Action, EffectRequest, GameConfig, PendingChoiceType, SourceKind
 from src.game.setup import setup_game
 
 
@@ -118,7 +119,7 @@ def test_trophy_awarded_on_player_played_mayhem_kill() -> None:
     assert state.trophy_controller_id == 0
 
 
-def test_trophy_controller_draws_six_discards_one_at_end_turn() -> None:
+def test_trophy_controller_draws_six_creates_discard_choice_at_end_turn() -> None:
     state, database = setup_game(GameConfig(player_count=2, seed=96))
     engine = GameEngine(state, database)
     player = state.players[0]
@@ -126,17 +127,47 @@ def test_trophy_controller_draws_six_discards_one_at_end_turn() -> None:
     player.hand = []
     player.played = []
     player.discard = []
-    player.deck = [
-        database.by_name("Знак").id,
-        database.by_name("Знак").id,
-        database.by_name("Знак").id,
-        database.by_name("Знак").id,
-        database.by_name("Пшик").id,
-        database.by_name("Пшик").id,
-    ]
+    player.deck = trophy_test_deck(state, database, player.id)
 
     engine.step(Action(ActionType.END_TURN))
 
-    assert len(player.hand) == 5
-    assert len(player.discard) == 1
-    assert any("trophy_end_turn" in event for event in state.event_log)
+    assert len(player.hand) == 6
+    assert player.discard == []
+    assert state.pending_choice is not None
+    assert state.pending_choice.choice_type == PendingChoiceType.TROPHY_DISCARD
+    assert len(state.pending_choice.options) == 6
+    assert any("pending_choice_created: trophy_discard" in event for event in state.event_log)
+
+
+def test_trophy_discard_moves_selected_card_and_continues_turn() -> None:
+    state, database = setup_game(GameConfig(player_count=2, seed=96))
+    engine = GameEngine(state, database)
+    player = state.players[0]
+    state.trophy_controller_id = player.id
+    player.hand = []
+    player.played = []
+    player.discard = []
+    player.deck = trophy_test_deck(state, database, player.id)
+
+    engine.step(Action(ActionType.END_TURN))
+    action = engine.legal_actions()[0]
+    selected = action.instance_id
+    engine.step(action)
+
+    assert selected in player.discard
+    assert selected not in player.hand
+    assert state.pending_choice is None
+    assert state.current_player_index == 1
+    assert state.phase == GamePhase.MAIN
+    assert any("trophy_discard" in event for event in state.event_log)
+
+
+def trophy_test_deck(state, database, player_id: int) -> list[str]:
+    return [
+        create_card_instance(state, database.by_name("Знак").id, owner_id=player_id, origin="test_trophy"),
+        create_card_instance(state, database.by_name("Знак").id, owner_id=player_id, origin="test_trophy"),
+        create_card_instance(state, database.by_name("Знак").id, owner_id=player_id, origin="test_trophy"),
+        create_card_instance(state, database.by_name("Знак").id, owner_id=player_id, origin="test_trophy"),
+        create_card_instance(state, database.by_name("Пшик").id, owner_id=player_id, origin="test_trophy"),
+        create_card_instance(state, database.by_name("Пшик").id, owner_id=player_id, origin="test_trophy"),
+    ]

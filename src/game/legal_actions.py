@@ -116,6 +116,23 @@ class LegalActionGenerator:
         choice = state.pending_choice
         if choice is None:
             return []
+        if choice.options:
+            return [
+                Action(
+                    ActionType.CHOOSE_TARGET,
+                    actor_id=choice.actor_id,
+                    card_id=option.get("card_id"),
+                    instance_id=option.get("instance_id"),
+                    market_index=option.get("market_index"),
+                    target_player=option.get("target_player"),
+                    payload={
+                        "choice_type": choice.choice_type,
+                        "option_id": option.get("id"),
+                    },
+                    description=option.get("description", f"Resolve {choice.choice_type}"),
+                )
+                for option in choice.options
+            ]
         return [
             Action(
                 ActionType.CHOOSE_TARGET,

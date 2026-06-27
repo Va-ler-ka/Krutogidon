@@ -86,6 +86,18 @@ class SourceKind(StrEnum):
     SYSTEM = "system"
 
 
+class PendingChoiceType(StrEnum):
+    CHOOSE_TARGET = "choose_target"
+    USE_OR_DECLINE_DEFENSE = "use_or_decline_defense"
+    DISCARD_CARD = "discard_card"
+    DESTROY_CARD = "destroy_card"
+    GAIN_CARD = "gain_card"
+    MAYHEM_CHOICE = "mayhem_choice"
+    TROPHY_DISCARD = "trophy_discard"
+    CHOOSE_MARKET_ATTACK_TARGET = "choose_market_attack_target"
+    CHOOSE_CARD_TO_PLAY_FROM_MARKET = "choose_card_to_play_from_market"
+
+
 @dataclass
 class EffectRequest:
     source_card_id: str
@@ -109,11 +121,18 @@ class EffectRequest:
 class PendingChoice:
     choice_type: str
     actor_id: int
+    choice_id: str = ""
     source_player_id: int | None = None
     source_card_id: str | None = None
+    source_card_instance_id: str | None = None
+    source_kind: SourceKind | None = None
     candidates: list[int] = field(default_factory=list)
+    options: list[dict[str, Any]] = field(default_factory=list)
+    min_choices: int = 1
+    max_choices: int = 1
     effect: EffectRequest | None = None
     prompt: str = ""
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -173,6 +192,8 @@ class GameState:
     dead_wizard_stack: list[str] = field(default_factory=list)
     trophy_controller_id: int | None = None
     pending_turn_advance: bool = False
+    pending_market_refill: bool = False
+    pending_market_attack_queue: list[dict[str, Any]] = field(default_factory=list)
     game_over: bool = False
     winner_ids: list[int] = field(default_factory=list)
     end_reason: str | None = None

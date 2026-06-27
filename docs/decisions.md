@@ -53,3 +53,12 @@
 - На конец хода контроллер Главного приза временно обрабатывается через auto-discard после добора до 6 карт; полноценный pending choice оставлен следующим шагом Stage 2.6.x.
 - Жетон дохлого колдуна дает `-3 VP`, здоровье лечится не выше `GameConfig.max_health = 25`, смерть возвращает игрока к 20 жизням.
 - Coverage разделяет `partial_safe` и `partial_unsafe`; `implemented_with_tests` требует явного registry в `src/game/implemented_patterns.py`.
+
+## 2026-06-28. Pending choices and mayhem completion pass Stage 2.6.3
+
+- `PendingChoice` расширен до универсального контракта с `choice_id`, `options`, source metadata и min/max choice bounds; legal actions строятся из option-id, чтобы агенты видели один и тот же интерфейс выбора.
+- Конец хода контроллера Главного приза больше не делает auto-discard: игрок добирает шестую карту и получает `trophy_discard` pending choice, после разрешения которого продолжается обычный end-turn flow.
+- `DestroyCard`, `DiscardCards` и `GainCard` создают pending choice, когда эффект требует выбрать одну карту из нескольких легальных вариантов.
+- `беспредел_10` реализован отдельным mayhem handler-ом: он просматривает карты барахолки, разыгрывает только их attack-секции и сохраняет `source_kind=market_mayhem`.
+- Market mayhem attacks используют общий damage pipeline, поэтому защита, смерть, redirect-ignore и отсутствие Главного приза для нейтрального источника остаются централизованными.
+- Replay summary теперь считает pending-choice created/resolved/by type, auto-choice markers и mayhem handlers; coverage дополнительно показывает mayhem и pending-choice blockers.
